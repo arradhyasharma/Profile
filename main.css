@@ -1088,3 +1088,20 @@ body{background:#f3f5ef;color:var(--color-text)}
 .initial-loading{padding:40px 0}
 @media(max-width:850px){.path-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.plot-experiment{grid-template-columns:1fr}.plot-result{min-height:70px}.workspace-label{display:none}}
 @media(max-width:600px){.topbar{height:62px;padding:0 17px}.mathlab-workspace-nav{top:62px;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:9px 12px}.workspace-tool-button{flex:0 0 auto;padding:10px 13px;font-size:12px}.main-content{padding:25px 14px 50px}.path-grid{grid-template-columns:1fr}.path-card{min-height:145px}.path-title{align-items:flex-start;flex-direction:column}.concept-grid,.identity-list,#formula-results,.challenge-settings,.challenge-rules{grid-template-columns:1fr}.experiment-controls{align-items:stretch}.experiment-controls label{flex:1 1 100%}.experiment-controls button{width:100%}.challenge-status-row{flex-wrap:wrap}.workspace-page-header h1,.lab-heading h1{letter-spacing:-1.4px}}
+
+/* ---------------------------------------------------------
+   PRACTICE + CHALLENGE V2: syllabus filters and MCQ controls
+   --------------------------------------------------------- */
+.bank-count-note,.practice-set-footer{margin-top:14px;padding:11px 13px;border-radius:9px;background:#f3f6ec;color:#58634a;font-size:12px;font-weight:650}
+.challenge-settings{grid-template-columns:repeat(3,minmax(0,1fr))}
+.challenge-config-note{margin:10px 0 18px;padding:12px 14px;border-left:3px solid var(--color-accent,#b8f23b);background:#f6f8f1;border-radius:0 9px 9px 0;color:#626b58;font-size:13px;line-height:1.65}
+.challenge-status-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;padding:12px 14px;border:1px solid #e6eadf;border-radius:10px;background:#f8faf5;color:#46503e;font-size:12px;font-weight:750}
+.mcq-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:18px 0}
+.mcq-instruction{grid-column:1/-1;margin:0 0 2px!important;color:#4e5943!important;font-size:13px!important;font-weight:750}
+.workspace-panel .mcq-option{display:flex;align-items:center;gap:12px;min-height:58px;padding:12px 14px;border:1px solid #dfe5d6;border-radius:11px;background:#fff;color:#2d3528;text-align:left;font-size:14px;font-weight:650}
+.workspace-panel .mcq-option:hover{border-color:#9bb65d;background:#f8faF3;transform:translateY(-1px)}
+.workspace-panel .mcq-option.is-selected{border:2px solid #8ba943;background:#f1f6e6;box-shadow:0 0 0 3px rgba(139,169,67,.12)}
+.mcq-letter{display:grid;flex:0 0 29px;width:29px;height:29px;place-items:center;border-radius:8px;background:#edf1e6;color:#455b28;font-size:12px;font-weight:850}
+.workspace-panel button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+@media(max-width:800px){.challenge-settings{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.challenge-settings,.mcq-options{grid-template-columns:1fr}.challenge-status-row{align-items:flex-start;flex-direction:column}.mcq-instruction{grid-column:auto}}

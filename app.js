@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
         practiceQuestion: null,
         practiceAnswered: false,
         practiceHintShown: false,
+        practiceSession: null,
+        practiceSettings: { chapterId: "all", difficulty: "all", count: 10 },
         coinResult: null
     };
 
@@ -319,10 +321,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         {
             chapterId: "surface-area-and-volume",
-            question: "Find the volume of a cube with side length 3 cm.",
+            question: "Find the VOLUME of a cube with side length 3 cm. Give your answer in cm³.",
             answer: "27",
+            accepted: ["27cm³", "27cm^3", "27 cubic centimetres", "27 cubic centimeters"],
             hint: "Volume of a cube = side × side × side.",
-            explanation: "3 × 3 × 3 = 27 cubic centimetres."
+            explanation: "V = 3 × 3 × 3 = 27 cm³. (Its total surface area would be 54 cm²; that is a different quantity.)"
         },
         { chapterId: "circles", question: "Find the circumference of a circle with radius 7 cm. Use π = 22/7.", answer: "44", accepted: ["44 cm"], hint: "Use C = 2πr.", explanation: "C = 2 × 22/7 × 7 = 44 cm." },
         { chapterId: "circles", question: "A circle has diameter 18 cm. Find its radius.", answer: "9", accepted: ["9 cm"], hint: "Radius is half the diameter.", explanation: "r = d/2 = 18/2 = 9 cm." },
@@ -344,6 +347,35 @@ document.addEventListener("DOMContentLoaded", function () {
         { chapterId: "measuring-space-perimeter-and-area", question: "Find the area of a triangle with sides 5 cm, 6 cm and 7 cm using Heron's formula, to 2 decimal places.", answer: "14.70", accepted: ["14.7"], hint: "First find the semi-perimeter s = (5+6+7)/2.", explanation: "s = 9. Area = √[9(9−5)(9−6)(9−7)] = √216 ≈ 14.70 cm²." },
         { chapterId: "sequences-and-progressions", question: "Find the 10th term of the AP 3, 7, 11, 15, …", answer: "39", hint: "Use aₙ = a + (n−1)d.", explanation: "a = 3, d = 4. a₁₀ = 3 + 9×4 = 39." },
         { chapterId: "sequences-and-progressions", question: "Find the 6th term of the GP 5, 10, 20, 40, …", answer: "160", hint: "Use aₙ = arⁿ⁻¹ with r = 2.", explanation: "a₆ = 5 × 2⁵ = 5 × 32 = 160." }
+        ,
+        { chapterId: "orienting-yourself-coordinates", question: "What are the coordinates of the origin?", answer: "(0,0)", accepted: ["0,0"], hint: "The origin is where the x-axis and y-axis meet.", explanation: "The origin is (0, 0): both coordinates are zero." },
+        { chapterId: "orienting-yourself-coordinates", question: "A point has x = -5 and y = 2. In which quadrant is it?", answer: "II", accepted: ["2", "second", "quadrant ii"], hint: "Negative x and positive y identify one quadrant.", explanation: "x is negative and y is positive, so the point lies in Quadrant II." },
+        { chapterId: "introduction-to-linear-polynomials", question: "What is the coefficient of x in 7x - 4?", answer: "7", hint: "The coefficient is the number multiplying the variable.", explanation: "7x means 7 multiplied by x, so the coefficient is 7." },
+        { chapterId: "introduction-to-linear-polynomials", question: "Evaluate 2x - 5 when x = 6.", answer: "7", hint: "Replace x with 6 before calculating.", explanation: "2(6) - 5 = 12 - 5 = 7." },
+        { chapterId: "the-world-of-numbers", question: "Is 0.75 rational or irrational?", answer: "rational", hint: "Can it be written as a fraction of integers?", explanation: "0.75 = 75/100 = 3/4, so it is rational." },
+        { chapterId: "the-world-of-numbers", question: "Find the value of 2³ × 2².", answer: "32", hint: "When multiplying powers with the same base, add exponents.", explanation: "2³ × 2² = 2⁵ = 32." },
+        { chapterId: "exploring-algebraic-identities", question: "Complete: (a - b)² = ?", answer: "a² - 2ab + b²", accepted: ["a^2-2ab+b^2"], hint: "Expand (a - b)(a - b).", explanation: "(a - b)² = a² - ab - ab + b² = a² - 2ab + b²." },
+        { chapterId: "exploring-algebraic-identities", question: "Evaluate  (x + 5)(x - 5) when x = 8.", answer: "39", hint: "Use (a + b)(a - b) = a² - b².", explanation: "(8 + 5)(8 - 5) = 13 × 3 = 39. Also 8² - 5² = 64 - 25 = 39." },
+        { chapterId: "circles", question: "A circle has diameter 14 cm. Find its circumference using π = 22/7.", answer: "44", accepted: ["44cm"], hint: "Use C = πd.", explanation: "C = (22/7) × 14 = 44 cm." },
+        { chapterId: "circles", question: "A sector is one-quarter of a circle. What is its central angle?", answer: "90", accepted: ["90°", "90 degrees"], hint: "A full circle is 360°.", explanation: "360° ÷ 4 = 90°." },
+        { chapterId: "measuring-space-perimeter-and-area", question: "Find the area of a parallelogram with base 8 cm and height 5 cm.", answer: "40", accepted: ["40cm2", "40cm²"], hint: "Area = base × perpendicular height.", explanation: "A = 8 × 5 = 40 cm²." },
+        { chapterId: "measuring-space-perimeter-and-area", question: "A trapezium has parallel sides 6 cm and 10 cm, and height 4 cm. Find its area.", answer: "32", hint: "Area = ½ × (sum of parallel sides) × height.", explanation: "A = ½ × (6 + 10) × 4 = ½ × 16 × 4 = 32 cm²." },
+        { chapterId: "introduction-to-probability", question: "A fair die is rolled. What is the probability of getting an even number?", answer: "1/2", accepted: ["3/6", "0.5", "50%"], hint: "The even outcomes are 2, 4 and 6.", explanation: "There are 3 favourable outcomes out of 6, so P = 3/6 = 1/2." },
+        { chapterId: "introduction-to-probability", question: "What is the probability of an impossible event?", answer: "0", accepted: ["zero"], hint: "An impossible event has no favourable outcomes.", explanation: "P(impossible event) = 0." },
+        { chapterId: "sequences-and-progressions", question: "Find the 8th term of the AP 2, 5, 8, 11, …", answer: "23", hint: "First term is 2 and common difference is 3.", explanation: "a₈ = a + 7d = 2 + 7(3) = 23." },
+        { chapterId: "sequences-and-progressions", question: "Find the common ratio of the GP 4, 12, 36, 108, …", answer: "3", hint: "Divide a term by the previous term.", explanation: "12 ÷ 4 = 3, so the common ratio is 3." },
+        { chapterId: "propositions-and-converses", question: "Write the converse: If a number is divisible by 10, then it is divisible by 5.", answer: "If a number is divisible by 5, then it is divisible by 10.", accepted: ["if divisible by 5 then divisible by 10"], hint: "Swap the hypothesis and conclusion.", explanation: "The converse is formed by interchanging the condition and the result." },
+        { chapterId: "propositions-and-converses", question: "True or false: The converse of a true statement is always true.", answer: "false", accepted: ["no"], hint: "Test the converse with a counterexample.", explanation: "False. A statement may be true while its converse is false." },
+        { chapterId: "understanding-data", question: "Find the mode of 2, 4, 4, 5, 7, 4, 8.", answer: "4", hint: "Find the value that appears most often.", explanation: "4 occurs three times, more than any other value. Mode = 4." },
+        { chapterId: "understanding-data", question: "Find the mean of 4, 6, 8 and 10.", answer: "7", hint: "Add all values and divide by 4.", explanation: "Mean = (4 + 6 + 8 + 10) ÷ 4 = 28 ÷ 4 = 7." },
+        { chapterId: "world-of-algorithms", question: "Which property ensures an algorithm eventually stops?", answer: "finiteness", accepted: ["finite steps", "finite"], hint: "An algorithm cannot continue forever.", explanation: "Finiteness means an algorithm completes after a limited number of steps." },
+        { chapterId: "world-of-algorithms", question: "In an algorithm, what is a sequence of clear instructions called?", answer: "steps", accepted: ["instructions"], hint: "An algorithm is made up of ordered actions.", explanation: "An algorithm is a finite sequence of well-defined steps." },
+        { chapterId: "quadrilaterals", question: "Find the area of a rhombus with diagonals 10 cm and 8 cm.", answer: "40", hint: "Area = ½ × product of diagonals.", explanation: "A = ½ × 10 × 8 = 40 cm²." },
+        { chapterId: "quadrilaterals", question: "Find the area of a trapezium with parallel sides 5 cm and 9 cm, height 3 cm.", answer: "21", hint: "Take half the sum of the parallel sides, then multiply by height.", explanation: "A = ½ × (5 + 9) × 3 = 21 cm²." },
+        { chapterId: "two-variables-one-line", question: "Does (2, 3) satisfy 2x + y = 7? Answer yes or no.", answer: "yes", accepted: ["true"], hint: "Substitute x = 2 and y = 3.", explanation: "2(2) + 3 = 4 + 3 = 7, so yes." },
+        { chapterId: "two-variables-one-line", question: "If x = 0 in x + 2y = 8, find y.", answer: "4", hint: "Substitute x = 0, then divide by 2.", explanation: "0 + 2y = 8, so y = 4." },
+        { chapterId: "surface-area-and-volume", question: "Find the total surface area of a cube with side 3 cm.", answer: "54", accepted: ["54cm2", "54cm²"], hint: "A cube has 6 square faces.", explanation: "TSA = 6a² = 6 × 3² = 6 × 9 = 54 cm²." },
+        { chapterId: "surface-area-and-volume", question: "Find the volume of a cuboid of length 5 cm, breadth 3 cm and height 2 cm.", answer: "30", accepted: ["30cm3", "30cm³"], hint: "Volume = length × breadth × height.", explanation: "V = 5 × 3 × 2 = 30 cm³." }
     ];
 
     const mediumQuestionIds = new Set(["Find the value of 3x + 2 when x = 4.", "Find the mean of 5, 7 and 9.", "Find the area of a triangle with base 12 cm and height 5 cm.", "Find the median of 2, 8, 4, 6, 10.", "Find the common difference of 11, 15, 19, 23, …", "Find the 5th term of the GP 3, 6, 12, 24, …", "Find the circumference of a circle with radius 7 cm. Use π = 22/7.", "Find the area of an equilateral triangle with side 4 cm, to 2 decimal places."]);
@@ -360,20 +392,23 @@ document.addEventListener("DOMContentLoaded", function () {
     function normalizeAnswer(value) {
         return String(value)
             .toLowerCase()
+            .trim()
             .replace(/\s+/g, "")
             .replace(/²/g, "^2")
             .replace(/³/g, "^3")
             .replace(/°/g, "degrees")
-            .replace(/,/g, "");
+            .replace(/,/g, "")
+            .replace(/centimetres?/g, "cm")
+            .replace(/centimeters?/g, "cm")
+            .replace(/cubiccm/g, "cm^3")
+            .replace(/squarecm/g, "cm^2")
+            .replace(/cm3/g, "cm^3")
+            .replace(/cm2/g, "cm^2");
     }
 
     function isCorrectAnswer(userAnswer, question) {
         const user = normalizeAnswer(userAnswer);
-
-        const accepted = [
-            question.answer
-        ].concat(question.accepted || []);
-
+        const accepted = [question.answer].concat(question.accepted || []);
         return accepted.some(function (answer) {
             return normalizeAnswer(answer) === user;
         });
@@ -615,102 +650,115 @@ document.addEventListener("DOMContentLoaded", function () {
     // PRACTICE MODE
     // =====================================================
 
-    function selectRandomQuestion() {
-        const index = Math.floor(Math.random() * questionBank.length);
+    function getSyllabusOptions(selected) {
+        const chapters = curriculum && Array.isArray(curriculum.chapters) ? curriculum.chapters : [];
+        return '<option value="all"' + (selected === "all" ? ' selected' : '') + '>Entire Class 9 syllabus</option>' +
+            chapters.map(function (chapter) {
+                return '<option value="' + escapeHTML(chapter.id) + '"' + (selected === chapter.id ? ' selected' : '') + '>' +
+                    escapeHTML(chapter.number + ". " + chapter.name) + '</option>';
+            }).join("");
+    }
 
-        return questionBank[index];
+    function getFilteredQuestions(chapterId, difficulty) {
+        const inSelectedSyllabus = questionBank.filter(function (question) {
+            return chapterId === "all" || question.chapterId === chapterId;
+        });
+        const byDifficulty = inSelectedSyllabus.filter(function (question) {
+            return difficulty === "all" || question.difficulty === difficulty;
+        });
+        // Never leave the learner with an empty set when a small chapter
+        // has not yet been tagged at the chosen difficulty.
+        return byDifficulty.length ? byDifficulty : inSelectedSyllabus;
+    }
+
+    function shuffleList(list) {
+        const copy = list.slice();
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+    }
+
+    function startPracticeSession() {
+        const chapterId = document.getElementById("practice-syllabus")?.value || "all";
+        const difficulty = document.getElementById("practice-difficulty")?.value || "all";
+        const count = Math.max(1, Math.min(100, Number(document.getElementById("practice-count")?.value) || 10));
+        const eligible = getFilteredQuestions(chapterId, difficulty);
+        if (!eligible.length) {
+            state.practiceSession = null;
+            renderPractice();
+            return;
+        }
+        state.practiceSettings = { chapterId, difficulty, count };
+        state.practiceSession = { questions: shuffleList(eligible).slice(0, Math.min(count, eligible.length)), index: 0 };
+        state.practiceQuestion = state.practiceSession.questions[0];
+        state.practiceAnswered = false;
+        state.practiceHintShown = false;
+        state.lastPracticeAnswer = "";
+        renderPractice();
     }
 
     function renderPractice() {
-        if (!state.practiceQuestion) {
-            state.practiceQuestion = selectRandomQuestion();
+        const session = state.practiceSession;
+        if (!session) {
+            mainContent.innerHTML = `
+                <div class="workspace-page">
+                    ${pageHeader("PRACTICE WORKSPACE", "Practise the syllabus you choose.", "Choose a chapter or the full Class 9 syllabus, set a difficulty and work through a question set.")}
+                    <section class="workspace-panel">
+                        <h2>Set up your practice</h2>
+                        <div class="challenge-settings">
+                            <label>Choose syllabus / chapter<select id="practice-syllabus">${getSyllabusOptions("all")}</select></label>
+                            <label>Difficulty<select id="practice-difficulty"><option value="all">All difficulties</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
+                            <label>Number of questions<select id="practice-count"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="15">15 questions</option><option value="20">20 questions</option><option value="30">30 questions</option><option value="50">50 questions</option></select></label>
+                        </div>
+                        <p class="challenge-config-note">The question set is drawn from the available question bank. If a chapter has fewer questions than requested, MathLab uses all available questions without repeating them. If a chapter has no questions tagged at the selected difficulty yet, its available questions are used instead.</p>
+                        <button type="button" data-action="start-practice">Start practice</button>
+                        <p class="bank-count-note">Question bank: ${questionBank.length} questions across ${curriculum.chapters.length} syllabus chapters.</p>
+                    </section>
+                </div>`;
+            return;
         }
 
-        const question = state.practiceQuestion;
+        if (session.index >= session.questions.length) {
+            mainContent.innerHTML = `
+                <div class="workspace-page">
+                    ${pageHeader("PRACTICE COMPLETE", "Good work.", "You have reached the end of this practice set.")}
+                    <section class="workspace-panel">
+                        <h2>Set finished</h2>
+                        <p>You attempted ${session.questions.length} questions.</p>
+                        <button type="button" data-action="practice-again">Choose another practice set</button>
+                    </section>
+                </div>`;
+            return;
+        }
 
+        const question = session.questions[session.index];
         let resultHTML = "";
-
         if (state.practiceAnswered) {
+            const correct = isCorrectAnswer(state.lastPracticeAnswer || "", question);
             resultHTML = `
                 <div class="practice-feedback">
-                    <h3>Answer checked</h3>
-
-                    <p>
-                        ${isCorrectAnswer(
-                            state.lastPracticeAnswer || "",
-                            question
-                        )
-                            ? "Correct!"
-                            : "Not quite. The correct answer is " +
-                                escapeHTML(question.answer) + "."}
-                    </p>
-
+                    <h3>${correct ? "Correct!" : "Not quite"}</h3>
+                    <p>${correct ? "Your answer is correct." : "Correct answer: " + escapeHTML(question.answer)}</p>
                     <p>${escapeHTML(question.explanation)}</p>
-
-                    <button type="button"
-                        data-action="next-practice">
-                        Next question
-                    </button>
-                </div>
-            `;
+                    <button type="button" data-action="next-practice">${session.index === session.questions.length - 1 ? "Finish practice set" : "Next question"}</button>
+                </div>`;
         }
 
         mainContent.innerHTML = `
             <div class="workspace-page">
-
-                ${pageHeader(
-                    "PRACTICE WORKSPACE",
-                    "Build problem-solving skills.",
-                    "Try a question, use a hint if needed, and understand the explanation."
-                )}
-
+                ${pageHeader("PRACTICE WORKSPACE", "Build problem-solving skills.", "Question " + (session.index + 1) + " of " + session.questions.length + " · " + escapeHTML(getQuestionChapterName(question)))}
                 <section class="workspace-panel">
-
-                    <p class="panel-kicker">
-                        ${escapeHTML(getQuestionChapterName(question))}
-                    </p>
-
+                    <div class="challenge-status-row"><span>Question ${session.index + 1}/${session.questions.length}</span><span>${escapeHTML(question.difficulty.toUpperCase())}</span><span>${escapeHTML(getQuestionChapterName(question))}</span></div>
                     <h2>${escapeHTML(question.question)}</h2>
-
-                    ${
-                        state.practiceHintShown && !state.practiceAnswered
-                            ? `<p class="practice-hint">${escapeHTML(question.hint)}</p>`
-                            : ""
-                    }
-
-                    ${
-                        state.practiceAnswered
-                            ? resultHTML
-                            : `
-                                <form id="practice-form">
-
-                                    <label for="practice-answer">
-                                        Your answer
-                                    </label>
-
-                                    <input
-                                        id="practice-answer"
-                                        type="text"
-                                        autocomplete="off"
-                                        required>
-
-                                    <button type="submit">
-                                        Check answer
-                                    </button>
-
-                                </form>
-
-                                <button type="button"
-                                    data-action="practice-hint">
-                                    Show hint
-                                </button>
-                            `
-                    }
-
+                    ${state.practiceHintShown && !state.practiceAnswered ? `<p class="practice-hint">${escapeHTML(question.hint)}</p>` : ""}
+                    ${state.practiceAnswered ? resultHTML : `
+                        <form id="practice-form"><label for="practice-answer">Your answer</label><input id="practice-answer" type="text" autocomplete="off" required><button type="submit">Check answer</button></form>
+                        <button type="button" data-action="practice-hint">Show hint</button>`}
+                    <p class="practice-set-footer">Filtered set · ${session.questions.length} questions selected from the question bank</p>
                 </section>
-
-            </div>
-        `;
+            </div>`;
     }
 
 
@@ -720,14 +768,60 @@ document.addEventListener("DOMContentLoaded", function () {
     // A hint reduces the available points for that question.
     // =====================================================
 
-    function shuffleQuestions(count, difficulty) {
-        const eligible = difficulty === "all" ? questionBank : questionBank.filter(q => q.difficulty === difficulty);
-        const copy = (eligible.length ? eligible : questionBank).slice();
-        for (let i = copy.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [copy[i], copy[j]] = [copy[j], copy[i]];
+    function shuffleQuestions(count, difficulty, chapterId) {
+        const eligible = getFilteredQuestions(chapterId || "all", difficulty || "all");
+        return shuffleList(eligible).slice(0, Math.min(count, eligible.length));
+    }
+
+    function getMCQOptions(question) {
+        if (Array.isArray(question.options) && question.options.length >= 2) return question.options.slice(0, 4);
+        const correct = String(question.answer);
+        const curated = {
+            "II": ["I", "II", "III", "IV"],
+            "rational": ["Rational", "Irrational", "Integer", "Whole number"],
+            "true": ["True", "False", "Both", "Neither"],
+            "false": ["True", "False", "Both", "Neither"],
+            "yes": ["Yes", "No", "Cannot be determined", "None of these"],
+            "finiteness": ["Finiteness", "Definiteness", "Input", "Output"],
+            "steps": ["Steps", "Variables", "Data", "Result"],
+            "1/2": ["1/2", "1/3", "1/4", "2/3"],
+            "1/3": ["1/3", "1/2", "1/4", "2/3"],
+            "(2,5)": ["(2, 5)", "(3, 4)", "(2, 4)", "(3, 5)"],
+            "a² + 2ab + b²": ["a² + 2ab + b²", "a² - 2ab + b²", "a² + b²", "a² - b²"],
+            "a² - 2ab + b²": ["a² + 2ab + b²", "a² - 2ab + b²", "a² - b²", "a² + b²"]
+        };
+        if (curated[correct]) return curated[correct].slice();
+        const options = [correct];
+        const numeric = Number(correct);
+        if (Number.isFinite(numeric) && correct.trim() !== "") {
+            [numeric + 1, numeric - 1, numeric + 2, numeric * 2, numeric / 2].forEach(function (value) {
+                const candidate = String(Number.isInteger(value) ? value : Number(value.toFixed(2)));
+                if (options.length < 4 && !options.includes(candidate)) options.push(candidate);
+            });
         }
-        return copy.slice(0, Math.min(count, copy.length));
+        const fallbacks = questionBank.map(q => String(q.answer)).filter(value => value !== correct);
+        for (const candidate of fallbacks) {
+            if (options.length >= 4) break;
+            if (!options.includes(candidate)) options.push(candidate);
+        }
+        return options.slice(0, 4);
+    }
+
+    function submitChallengeAnswer(answer) {
+        const session = state.challenge;
+        if (!session || session.answered || session.finished) return;
+        updateChallengeTimer();
+        if (session.finished) return;
+        const question = session.questions[session.index];
+        const correct = isCorrectAnswer(answer, question);
+        session.answered = true;
+        session.answerCorrect = correct;
+        session.userAnswer = answer;
+        if (correct) {
+            session.correct++;
+            session.score += session.hintShown ? Math.ceil(session.pointsEach / 2) : session.pointsEach;
+        }
+        renderChallenge();
     }
 
     function startChallenge() {
@@ -736,14 +830,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const count = Math.max(1, Math.min(questionBank.length, Number(document.getElementById("challenge-count")?.value) || 5));
         const points = Math.max(1, Math.min(100, Number(document.getElementById("challenge-points")?.value) || 10));
         const difficulty = document.getElementById("challenge-difficulty")?.value || "all";
-        state.challengeSettings = { minutes, count, difficulty, points };
-        const questions = shuffleQuestions(count, difficulty);
+        const chapterId = document.getElementById("challenge-syllabus")?.value || "all";
+        const answerMode = document.getElementById("challenge-mode")?.value || "written";
+        state.challengeSettings = { minutes, count, difficulty, points, chapterId, answerMode };
+        const questions = shuffleQuestions(count, difficulty, chapterId);
+        if (!questions.length) {
+            state.challenge = null;
+            renderChallenge();
+            return;
+        }
         state.challenge = {
             questions, index: 0, score: 0, correct: 0, answered: false,
             answerCorrect: false, hintShown: false,
             remainingSeconds: minutes * 60, deadline: Date.now() + minutes * 60000,
             finished: false, timedOut: false, pointsEach: points,
-            maxScore: questions.length * points
+            maxScore: questions.length * points,
+            answerMode: answerMode,
+            selectedOption: null,
+            userAnswer: ""
         };
         recordActivity("Started Challenge Mode", `Started a ${questions.length}-question challenge.`);
         renderChallenge();
@@ -861,19 +965,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     ${pageHeader(
                         "TEST YOUR UNDERSTANDING",
                         "Challenge Mode.",
-                        "Take a timed five-question challenge using a selection of starter mathematics questions."
+                        "Choose the syllabus, MCQ or written answers, difficulty, time, question count and points."
                     )}
 
                     <section class="workspace-panel">
 
                         <h2>Configure your challenge</h2>
                         <div class="challenge-settings">
-                            <label>Time limit <select id="challenge-minutes"><option value="1">1 minute</option><option value="3">3 minutes</option><option value="5" selected>5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select></label>
-                            <label>Number of questions <select id="challenge-count"><option>5</option><option>10</option><option>15</option><option>20</option><option>25</option></select></label>
-                            <label>Difficulty <select id="challenge-difficulty"><option value="all">Mixed</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
-                            <label>Points per question <select id="challenge-points"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>50</option></select></label>
+                            <label>Choose syllabus / chapter<select id="challenge-syllabus">${getSyllabusOptions("all")}</select></label>
+                            <label>Answer mode<select id="challenge-mode"><option value="mcq" selected>Multiple choice (MCQ)</option><option value="written">Type your answer</option></select></label>
+                            <label>Time limit<select id="challenge-minutes"><option value="1">1 minute</option><option value="3">3 minutes</option><option value="5" selected>5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select></label>
+                            <label>Number of questions<select id="challenge-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option><option>40</option><option>50</option></select></label>
+                            <label>Difficulty<select id="challenge-difficulty"><option value="all">Mixed</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
+                            <label>Points per question<select id="challenge-points"><option>1</option><option>2</option><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>50</option></select></label>
                         </div>
-                        <p class="challenge-config-note">Maximum score is calculated automatically. The selected difficulty filters the question bank; if fewer questions exist at that level than requested, the challenge uses all available questions at that level. A hint halves the points for that question.</p>
+                        <p class="challenge-config-note">Choose a single chapter or the entire Class 9 syllabus. The maximum score is calculated from your selected question count and points per question. If the selected chapter has fewer questions, MathLab uses all available questions without repeating them. If that chapter has no questions tagged at the chosen difficulty yet, its available questions are used instead.</p>
                         <button type="button" data-action="start-challenge">Start Challenge</button>
 
                     </section>
@@ -916,7 +1022,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             ${
                                 session.timedOut
                                     ? "The timer reached zero."
-                                    : "You completed all five questions."
+                                    : "You completed the selected question set."
                             }
                         </p>
 
@@ -985,53 +1091,20 @@ document.addEventListener("DOMContentLoaded", function () {
                         session.answered
                             ? `
                                 <div class="challenge-feedback">
-
-                                    <h3>
-                                        ${session.answerCorrect ? "Correct!" : "Incorrect"}
-                                    </h3>
-
+                                    <h3>${session.answerCorrect ? "Correct!" : "Incorrect"}</h3>
                                     <p>${escapeHTML(question.explanation)}</p>
-
-                                    <p>
-                                        Correct answer:
-                                        <strong>${escapeHTML(question.answer)}</strong>
-                                    </p>
-
-                                    <button type="button"
-                                        data-action="next-challenge">
-                                        ${
-                                            questionNumber === session.questions.length
-                                                ? "Finish challenge"
-                                                : "Next question"
-                                        }
-                                    </button>
-
-                                </div>
-                            `
-                            : `
-                                <form id="challenge-answer-form">
-
-                                    <label for="challenge-answer">
-                                        Your answer
-                                    </label>
-
-                                    <input
-                                        id="challenge-answer"
-                                        type="text"
-                                        autocomplete="off"
-                                        required>
-
-                                    <button type="submit">
-                                        Submit answer
-                                    </button>
-
-                                </form>
-
-                                <button type="button"
-                                    data-action="challenge-hint">
-                                    Use a hint
-                                </button>
-                            `
+                                    <p>Your answer: <strong>${escapeHTML(session.userAnswer || "—")}</strong></p>
+                                    <p>Correct answer: <strong>${escapeHTML(question.answer)}</strong></p>
+                                    <button type="button" data-action="next-challenge">${questionNumber === session.questions.length ? "Finish challenge" : "Next question"}</button>
+                                </div>`
+                            : session.answerMode === "mcq"
+                                ? `<div class="mcq-options"><p class="mcq-instruction">Choose one answer:</p>${getMCQOptions(question).map(function (option, index) {
+                                    const selected = session.selectedOption === index;
+                                    return `<button type="button" class="mcq-option${selected ? " is-selected" : ""}" data-action="select-challenge-option" data-option-index="${index}" aria-pressed="${selected}"><span class="mcq-letter">${String.fromCharCode(65 + index)}</span><span>${escapeHTML(option)}</span></button>`;
+                                }).join("")}</div>
+                                <button type="button" data-action="submit-challenge-mcq" ${session.selectedOption === null ? "disabled" : ""}>Submit selected answer</button>
+                                <button type="button" class="secondary-button" data-action="challenge-hint">Use a hint</button>`
+                                : `<form id="challenge-answer-form"><label for="challenge-answer">Your answer</label><input id="challenge-answer" type="text" autocomplete="off" required><button type="submit">Submit answer</button></form><button type="button" class="secondary-button" data-action="challenge-hint">Use a hint</button>`
                     }
 
                 </section>
@@ -1359,9 +1432,46 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (action === "start-challenge" ||
-            action === "restart-challenge") {
+        if (action === "start-practice") {
+            startPracticeSession();
+            return;
+        }
+
+        if (action === "practice-again") {
+            state.practiceSession = null;
+            state.practiceQuestion = null;
+            state.practiceAnswered = false;
+            renderPractice();
+            return;
+        }
+
+        if (action === "start-challenge") {
             startChallenge();
+            return;
+        }
+
+        if (action === "restart-challenge") {
+            stopChallengeTimer();
+            state.challenge = null;
+            renderChallenge();
+            return;
+        }
+
+        if (action === "select-challenge-option") {
+            if (state.challenge && !state.challenge.answered) {
+                state.challenge.selectedOption = Number(actionButton.dataset.optionIndex);
+                renderChallenge();
+            }
+            return;
+        }
+
+        if (action === "submit-challenge-mcq") {
+            const session = state.challenge;
+            if (session && session.selectedOption !== null && !session.answered) {
+                const question = session.questions[session.index];
+                const options = getMCQOptions(question);
+                submitChallengeAnswer(options[session.selectedOption]);
+            }
             return;
         }
 
@@ -1385,6 +1495,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 session.answered = false;
                 session.answerCorrect = false;
                 session.hintShown = false;
+                session.selectedOption = null;
+                session.userAnswer = "";
                 renderChallenge();
             }
 
@@ -1398,7 +1510,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (action === "next-practice") {
-            state.practiceQuestion = selectRandomQuestion();
+            if (state.practiceSession) state.practiceSession.index++;
+            state.practiceQuestion = state.practiceSession && state.practiceSession.questions[state.practiceSession.index];
             state.practiceAnswered = false;
             state.practiceHintShown = false;
             state.lastPracticeAnswer = "";
@@ -1429,23 +1542,9 @@ document.addEventListener("DOMContentLoaded", function () {
             
             if (session.finished) return;
 
-            const question = session.questions[session.index];
             const answer = input.value.trim();
-
             if (!answer) return;
-
-            const correct = isCorrectAnswer(answer, question);
-
-            session.answered = true;
-            session.answerCorrect = correct;
-
-            if (correct) {
-                session.correct++;
-
-                session.score += session.hintShown ? Math.ceil(session.pointsEach / 2) : session.pointsEach;
-            }
-
-            renderChallenge();
+            submitChallengeAnswer(answer);
             return;
         }
 
