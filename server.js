@@ -1,16 +1,19 @@
+
 "use strict";
 
 require("dotenv").config();
+
 const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
+const app = express();
 
-const app = express();const API_KEY = process.env.GEMINI_API_KEY;
+const API_KEY = process.env.GEMINI_API_KEY;
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
 const PORT = Number(process.env.PORT || 3000);
-const API_KEY = process.env.GEMINI_API_KEY;
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
+
 
 app.disable("x-powered-by");
 app.use(helmet({ contentSecurityPolicy: false }));
