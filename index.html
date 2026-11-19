@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="MathLab — The Mathematics Workshop. Learn, explore, experiment and understand mathematics."
+    >
+
+    <meta name="theme-color" content="#f5f7fa">
+
+    <title>MathLab — The Mathematics Workshop</title>
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Application data and modules -->
+    <script src="js/data/class9-curriculum.js" defer></script>
+    <script src="js/features/workshop.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body class="mathlab-theme-custom">
+
+    <!-- Main application header -->
+    <header class="topbar">
+
+        <a
+            class="brand"
+            href="#labs"
+            aria-label="MathLab home"
+        >
+            Math<span>Lab</span><span class="brand-period">.</span>
+        </a>
+
+        <div class="topbar-center">
+            <span class="grade-label">CLASS 09</span>
+        </div>
+
+        <div class="top-actions">
+            <span class="workspace-label">
+                THE MATHEMATICS WORKSHOP
+            </span>
+        </div>
+
+    </header>
+
+
+    <!--
+        app.js creates the workspace navigation dynamically.
+        Keep this container free of hardcoded workspace links;
+        app.js creates the four main destinations.
+    -->
+
+    <div class="app-layout">
+
+        <main
+            class="main-content"
+            id="main-content"
+            aria-live="polite"
+            aria-busy="false"
+            tabindex="-1"
+        >
+
+            <!-- Initial loading content; app.js replaces this. -->
+            <section class="initial-loading" aria-label="Loading MathLab">
+
+                <h1>Welcome to MathLab</h1>
+
+                <p>
+                    Your mathematics workshop is getting ready.
+                </p>
+
+                <p>
+                    Loading your Class 9 learning workspace...
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Fallback for users who have JavaScript disabled -->
+    <noscript>
+        <div class="noscript-message">
+            <h2>JavaScript is required</h2>
+            <p>
+                MathLab needs JavaScript enabled to load lessons
+                and interactive activities.
+            </p>
+        </div>
+    </noscript>
+
+</body>
+</html>
