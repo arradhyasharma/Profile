@@ -12,6 +12,260 @@
     ["patterns","Number & Patterns","Number systems, arithmetic progressions (AP) first, geometric progressions (GP), and sequence experiments."],
     ["reasoning","Reasoning & Algorithms","Propositions, converses, logical statements and step-by-step algorithms."]
   ];
+  const logicStatements = [
+    {
+        "original": "If an integer is divisible by 4, then it is even.",
+        "converse": "If an integer is even, then it is divisible by 4.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "6 is even but is not divisible by 4."
+    },
+    {
+        "original": "If an integer is a multiple of 6, then it is a multiple of 3.",
+        "converse": "If an integer is a multiple of 3, then it is a multiple of 6.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "9 is a multiple of 3 but not of 6."
+    },
+    {
+        "original": "If an integer is a multiple of 10, then it is divisible by 5.",
+        "converse": "If an integer is divisible by 5, then it is a multiple of 10.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "15 is divisible by 5 but is not a multiple of 10."
+    },
+    {
+        "original": "If an integer is divisible by 8, then it is divisible by 4.",
+        "converse": "If an integer is divisible by 4, then it is divisible by 8.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "4 is divisible by 4 but not by 8."
+    },
+    {
+        "original": "If an integer is divisible by 9, then it is divisible by 3.",
+        "converse": "If an integer is divisible by 3, then it is divisible by 9.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "3 is divisible by 3 but not by 9."
+    },
+    {
+        "original": "If an integer is even, then it is divisible by 2.",
+        "converse": "If an integer is divisible by 2, then it is even.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "The two statements describe the same property of integers."
+    },
+    {
+        "original": "If an integer is odd, then it is not divisible by 2.",
+        "converse": "If an integer is not divisible by 2, then it is odd.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "For integers, every number is either even or odd."
+    },
+    {
+        "original": "If an integer is divisible by 6, then it is divisible by 2.",
+        "converse": "If an integer is divisible by 2, then it is divisible by 6.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "2 is divisible by 2 but not by 6."
+    },
+    {
+        "original": "If an integer is divisible by 15, then it is divisible by 5.",
+        "converse": "If an integer is divisible by 5, then it is divisible by 15.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "5 is divisible by 5 but not by 15."
+    },
+    {
+        "original": "If an integer is a multiple of 12, then it is a multiple of 3.",
+        "converse": "If an integer is a multiple of 3, then it is a multiple of 12.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "3 is a multiple of 3 but not of 12."
+    },
+    {
+        "original": "If a positive integer is divisible by 10, then its last digit is 0.",
+        "converse": "If a positive integer ends in 0, then it is divisible by 10.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "In base ten, both statements express the divisibility rule for 10."
+    },
+    {
+        "original": "If a positive integer is divisible by 5, then its last digit is 0 or 5.",
+        "converse": "If a positive integer ends in 0 or 5, then it is divisible by 5.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "Both directions are the divisibility rule for 5."
+    },
+    {
+        "original": "If a prime integer is greater than 2, then it is odd.",
+        "converse": "If an integer greater than 2 is odd, then it is prime.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "9 is odd and greater than 2, but it is not prime."
+    },
+    {
+        "original": "If an integer is the square of an integer, then it is non-negative.",
+        "converse": "If an integer is non-negative, then it is the square of an integer.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "2 is non-negative but is not the square of an integer."
+    },
+    {
+        "original": "If an integer is divisible by both 2 and 3, then it is divisible by 6.",
+        "converse": "If an integer is divisible by 6, then it is divisible by both 2 and 3.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "Divisibility by 6 is equivalent to divisibility by both 2 and 3."
+    },
+    {
+        "original": "If an integer is divisible by 4, then it is divisible by 8.",
+        "converse": "If an integer is divisible by 8, then it is divisible by 4.",
+        "originalTruth": "False",
+        "converseTruth": "True",
+        "reason": "4 is divisible by 4 but not by 8; every multiple of 8 is a multiple of 4."
+    },
+    {
+        "original": "If a positive integer ends in 5, then it is divisible by 5.",
+        "converse": "If a positive integer is divisible by 5, then it ends in 5.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "10 is divisible by 5 but ends in 0."
+    },
+    {
+        "original": "If a positive integer has digit sum divisible by 3, then the integer is divisible by 3.",
+        "converse": "If a positive integer is divisible by 3, then its digit sum is divisible by 3.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "The digit-sum test for divisibility by 3 works in both directions."
+    },
+    {
+        "original": "If a shape is a square, then it has four sides.",
+        "converse": "If a shape has four sides, then it is a square.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "A rectangle that is not a square is a quadrilateral with four sides."
+    },
+    {
+        "original": "If a shape is a square, then it is a rectangle.",
+        "converse": "If a shape is a rectangle, then it is a square.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "A non-square rectangle is a counterexample to the converse."
+    },
+    {
+        "original": "If a shape is a square, then it is a rhombus.",
+        "converse": "If a shape is a rhombus, then it is a square.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "A rhombus with angles that are not right angles is not a square."
+    },
+    {
+        "original": "If a triangle is equilateral, then it is isosceles.",
+        "converse": "If a triangle is isosceles, then it is equilateral.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "A triangle with side lengths 5, 5 and 6 is isosceles but not equilateral."
+    },
+    {
+        "original": "If a triangle is equilateral, then each of its angles is 60°.",
+        "converse": "If each angle of a triangle is 60°, then the triangle is equilateral.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "Equal angles in a triangle have equal opposite sides; the angle sum is 180°."
+    },
+    {
+        "original": "If a rectangle is a quadrilateral, then its opposite sides are equal.",
+        "converse": "If a quadrilateral has equal opposite sides, then it is a rectangle.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "A non-rectangular parallelogram has equal opposite sides."
+    },
+    {
+        "original": "If a quadrilateral is a parallelogram, then both pairs of opposite sides are parallel.",
+        "converse": "If both pairs of opposite sides of a quadrilateral are parallel, then it is a parallelogram.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "This is the defining parallel-side property of a parallelogram."
+    },
+    {
+        "original": "If a quadrilateral is a rhombus, then all four sides are equal.",
+        "converse": "If all four sides of a quadrilateral are equal, then it is a rhombus.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "A quadrilateral with four equal sides is a rhombus."
+    },
+    {
+        "original": "If a quadrilateral is a square, then all four angles are right angles.",
+        "converse": "If all four angles of a quadrilateral are right angles, then it is a square.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "A rectangle with unequal adjacent sides has four right angles but is not a square."
+    },
+    {
+        "original": "If a triangle has two equal sides, then the angles opposite those sides are equal.",
+        "converse": "If a triangle has two equal angles, then the sides opposite those angles are equal.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "The isosceles triangle theorem and its converse are both true."
+    },
+    {
+        "original": "If a circle has radius 4 cm, then its diameter is 8 cm.",
+        "converse": "If a circle has diameter 8 cm, then its radius is 4 cm.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "Diameter is twice the radius, so each statement follows from the other."
+    },
+    {
+        "original": "If a shape is a quadrilateral, then it has four sides.",
+        "converse": "If a polygon has four sides, then it is a quadrilateral.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "A quadrilateral is, by definition, a four-sided polygon."
+    },
+    {
+        "original": "If a real number x equals 2, then x² equals 4.",
+        "converse": "If a real number x² equals 4, then x equals 2.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "x = -2 also gives x² = 4."
+    },
+    {
+        "original": "If a real number x is greater than 3, then it is greater than 1.",
+        "converse": "If a real number x is greater than 1, then it is greater than 3.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "x = 2 is greater than 1 but not greater than 3."
+    },
+    {
+        "original": "If a real number x equals 0, then x² equals 0.",
+        "converse": "If a real number x² equals 0, then x equals 0.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "The only real number whose square is zero is zero."
+    },
+    {
+        "original": "If a real number x is negative, then x² is positive.",
+        "converse": "If a real number x² is positive, then x is negative.",
+        "originalTruth": "True",
+        "converseTruth": "False",
+        "reason": "x = 2 has a positive square but is not negative."
+    },
+    {
+        "original": "If an integer is even, then its square is even.",
+        "converse": "If the square of an integer is even, then the integer is even.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "An odd integer has an odd square, so an even square must come from an even integer."
+    },
+    {
+        "original": "If an integer is odd, then its square is odd.",
+        "converse": "If the square of an integer is odd, then the integer is odd.",
+        "originalTruth": "True",
+        "converseTruth": "True",
+        "reason": "An even integer has an even square; therefore an odd square comes from an odd integer."
+    }
+];
   let active = "coordinates", coinStats={heads:0,tails:0}, diceCounts=Array(6).fill(0);
   const boundRoots = new WeakSet();
   function header(k,t,d){return `<header class="lab-heading"><p class="eyebrow">${k}</p><h1>${t}</h1><p>${d}</p></header>`;}
@@ -88,8 +342,8 @@
     ${panel("4. Sequence experiments — AP and GP",`<p>Now test both rules by changing the first term, common difference or common ratio, and the number of terms.</p><h3>AP experiment</h3><div class="experiment-controls"><label>First term a <input id="ap-a" type="number" value="4"></label><label>Common difference d <input id="ap-d" type="number" value="3"></label><label>Number of terms n <input id="ap-n" type="number" min="1" max="30" value="6"></label><button data-action="ap-calc">Generate AP</button></div><div id="ap-result" class="answer-panel">Your AP terms and nth term appear here.</div><h3>GP experiment</h3><div class="experiment-controls"><label>First term a <input id="gp-a" type="number" value="2"></label><label>Common ratio r <input id="gp-r" type="number" value="3" step="0.5"></label><label>Number of terms n <input id="gp-n" type="number" min="1" max="30" value="5"></label><button data-action="gp-calc">Generate GP</button></div><div id="gp-result" class="answer-panel">Your GP terms and nth term appear here.</div>`)}
   `;}
   function reasoning(){return `
-    ${panel("1. Propositions and their converses",`<p>A proposition is a declarative sentence that is either true or false. A question or command is not a proposition because it does not have a truth value.</p><p>If a conditional statement is “If P, then Q”, its <b>converse</b> is “If Q, then P”. The original statement and its converse do not automatically have the same truth value.</p>${step("Example","Original: If a number is divisible by 4, then it is even (true). Converse: If a number is even, then it is divisible by 4 (false; 6 is a counterexample).")}
-      <div class="experiment-controls"><label>Statement <select id="logic-type"><option value="1">If a number is divisible by 4, it is even.</option><option value="2">If a number is a multiple of 6, it is a multiple of 3.</option><option value="3">If a shape is a square, it is a rectangle.</option></select></label><button data-action="logic-test">Show statement and converse</button></div><div id="logic-result" class="answer-panel">Choose a statement to inspect its converse.</div>`)}
+    ${panel("1. Propositions and their converses",`<p>A <b>proposition</b> is a declarative sentence that has exactly one truth value: true or false. Questions, commands, requests and open sentences containing an unspecified variable are not propositions because their truth cannot be decided as written.</p><p>A conditional proposition has the form <b>If P, then Q</b>. P is the hypothesis (condition) and Q is the conclusion. Its <b>converse</b> is formed by swapping them: <b>If Q, then P</b>. Swapping does not guarantee that the converse has the same truth value.</p><p><b>Counterexample:</b> one valid example that makes a universal statement false. To show a statement is false, one counterexample is enough. Always read the number domain carefully (integers, positive integers, real numbers, etc.).</p>${step("Worked example","Original: If an integer is divisible by 4, then it is even — TRUE. Converse: If an integer is even, then it is divisible by 4 — FALSE. Counterexample: 6 is even but is not divisible by 4.")}
+      <h3>Explore 36 statement pairs</h3><p>Choose a statement. MathLab will show its converse, evaluate both truth values and explain why. This is a reference set for learning, not a claim that all 36 are from the prescribed textbook.</p><div class="experiment-controls"><label>Choose a statement<select id="logic-type">${logicStatements.map((item,i)=>`<option value="${i}">${String(i+1).padStart(2,'0')}. ${esc(item.original)}</option>`).join('')}</select></label><button data-action="logic-test">Show original and converse</button></div><div id="logic-result" class="answer-panel">Choose any of the 36 statements and select “Show original and converse”.</div>`)}
     ${panel("2. The World of Algorithms",`<p>An algorithm is a finite, ordered set of clear steps for solving a problem. A good algorithm has well-defined inputs, unambiguous steps, and an output. It should finish after a finite number of steps.</p>${step("Example: find the average of three numbers","1. Start. 2. Read a, b, c. 3. Calculate total = a+b+c. 4. Calculate average = total/3. 5. Display average. 6. Stop.")}
       <div class="experiment-controls"><label>First number <input id="alg-a" type="number" value="6"></label><label>Second number <input id="alg-b" type="number" value="9"></label><label>Third number <input id="alg-c" type="number" value="12"></label><button data-action="algorithm">Run average algorithm</button></div><div id="algorithm-result" class="answer-panel">Run the steps to see the output.</div>`)}
   `;}
@@ -133,7 +387,7 @@
       if(a==="stats-calc"){let raw=$(root,"#stats-data").value.split(/[ ,;]+/).filter(Boolean),arr=raw.map(Number);if(!arr.length||arr.some(n=>!Number.isFinite(n))){answer($(root,"#stats-result"),"Enter a valid comma-separated list of numbers.");return;}arr.sort((x,y)=>x-y);let sum=arr.reduce((s,n)=>s+n,0),mid=Math.floor(arr.length/2),med=arr.length%2?arr[mid]:(arr[mid-1]+arr[mid])/2,counts={};arr.forEach(n=>counts[n]=(counts[n]||0)+1);let max=Math.max(...Object.values(counts)),modes=Object.keys(counts).filter(k=>counts[k]===max);answer($(root,"#stats-result"),steps([`Arrange in ascending order: ${arr.join(", ")}.`,`Mean = sum ÷ count = ${sum} ÷ ${arr.length} = ${(sum/arr.length).toFixed(3)}.`,`Median = ${med} (middle value${arr.length%2?"":"s averaged"}).`,`Mode = ${max===1?"No mode":modes.join(", ")} (highest frequency = ${max}).`]));}
       if(a==="ap-calc"){let first=num(root,"ap-a"),d=num(root,"ap-d"),n=Math.max(1,Math.min(30,Math.floor(num(root,"ap-n",1)))),terms=Array.from({length:n},(_,i)=>first+i*d);answer($(root,"#ap-result"),steps([`First term a = ${first}; common difference d = ${d}.`,`Terms: ${terms.join(", ")}.`,`nth term aₙ = a + (n−1)d = ${first} + (${n}−1)(${d}) = ${terms[n-1]}.`,`Sum of ${n} terms = ${terms.reduce((s,v)=>s+v,0)}.`]));}
       if(a==="gp-calc"){let first=num(root,"gp-a"),r=num(root,"gp-r"),n=Math.max(1,Math.min(30,Math.floor(num(root,"gp-n",1)))),terms=Array.from({length:n},(_,i)=>first*Math.pow(r,i));answer($(root,"#gp-result"),steps([`First term a = ${first}; common ratio r = ${r}.`,`Terms: ${terms.map(v=>Number(v.toFixed(4))).join(", ")}.`,`nth term aₙ = arⁿ⁻¹ = ${first} × ${r}^${n-1} = ${terms[n-1]}.`,`Sum of ${n} terms = ${terms.reduce((s,v)=>s+v,0).toFixed(4)}.`]));}
-      if(a==="logic-test"){let v=$(root,"#logic-type").value,data={1:["If a number is divisible by 4, it is even.","If a number is even, it is divisible by 4.","Original is true. Converse is false: 6 is even but not divisible by 4."],2:["If a number is a multiple of 6, it is a multiple of 3.","If a number is a multiple of 3, it is a multiple of 6.","Original is true. Converse is false: 9 is a multiple of 3 but not 6."],3:["If a shape is a square, it is a rectangle.","If a shape is a rectangle, it is a square.","Original is true. Converse is false: a non-square rectangle is a counterexample."]}[v];answer($(root,"#logic-result"),steps([`Original: ${data[0]}`,`Converse: ${data[1]}`,data[2]]));}
+      if(a==="logic-test"){let index=Number($(root,"#logic-type").value),item=logicStatements[index];if(!item)return;answer($(root,"#logic-result"),steps([`Original statement: ${item.original}`,`Original truth value: ${item.originalTruth}.`,`Converse (swap P and Q): ${item.converse}`,`Converse truth value: ${item.converseTruth}.`,`Reason / counterexample: ${item.reason}`]));}
       if(a==="algorithm"){let x=num(root,"alg-a"),y=num(root,"alg-b"),z=num(root,"alg-c"),sum=x+y+z;answer($(root,"#algorithm-result"),steps([`Input values: ${x}, ${y}, ${z}.`,`Add the values: ${x} + ${y} + ${z} = ${sum}.`,`Divide by 3: ${sum} ÷ 3 = ${(sum/3).toFixed(3)}.`,`Output: average = ${(sum/3).toFixed(3)}.`]));}
     });
     root.addEventListener("change",e=>{if(e.target.id==="quad-shape")updateQuadInputs(root);if(e.target.id==="tri-method"){let m=e.target.value,box=$(root,"#tri-inputs");if(!box)return;box.innerHTML=m==="base"?`<label>Base (cm) <input id="tri-a" type="number" value="10"></label><label>Height (cm) <input id="tri-b" type="number" value="6"></label>`:m==="equilateral"?`<label>Side (cm) <input id="tri-a" type="number" value="6"></label>`:`<label>Side a <input id="tri-a" type="number" value="5"></label><label>Side b <input id="tri-b" type="number" value="6"></label><label>Side c <input id="tri-c" type="number" value="7"></label>`;}});

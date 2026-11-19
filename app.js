@@ -378,11 +378,559 @@ document.addEventListener("DOMContentLoaded", function () {
         { chapterId: "surface-area-and-volume", question: "Find the volume of a cuboid of length 5 cm, breadth 3 cm and height 2 cm.", answer: "30", accepted: ["30cm3", "30cm³"], hint: "Volume = length × breadth × height.", explanation: "V = 5 × 3 × 2 = 30 cm³." }
     ];
 
+
+    // Additional curated question bank: 67 more questions (128 total).
+    const additionalQuestionBank = [
+    {
+        "chapterId": "orienting-yourself-coordinates",
+        "question": "What is the x-coordinate of the point (-7, 3)?",
+        "answer": "-7",
+        "hint": "The x-coordinate is written first.",
+        "explanation": "In (-7, 3), x = -7 and y = 3."
+    },
+    {
+        "chapterId": "orienting-yourself-coordinates",
+        "question": "A point lies on the x-axis. What is its y-coordinate?",
+        "answer": "0",
+        "hint": "Every point on the x-axis has zero vertical coordinate.",
+        "explanation": "The y-coordinate of every point on the x-axis is 0."
+    },
+    {
+        "chapterId": "orienting-yourself-coordinates",
+        "question": "In which quadrant does (-4, -9) lie?",
+        "answer": "III",
+        "hint": "Check the signs of both coordinates.",
+        "explanation": "Negative x and negative y identify Quadrant III."
+    },
+    {
+        "chapterId": "orienting-yourself-coordinates",
+        "question": "What is the reflection of (5, -2) across the x-axis?",
+        "answer": "(5,2)",
+        "hint": "Reflection across x-axis changes the sign of y.",
+        "explanation": "The x-coordinate stays 5 and y changes from -2 to 2."
+    },
+    {
+        "chapterId": "orienting-yourself-coordinates",
+        "question": "What is the reflection of (-3, 8) across the y-axis?",
+        "answer": "(3,8)",
+        "hint": "Reflection across y-axis changes the sign of x.",
+        "explanation": "The x-coordinate changes to 3 while y remains 8."
+    },
+    {
+        "chapterId": "introduction-to-linear-polynomials",
+        "question": "How many terms are in the polynomial 6x - 11?",
+        "answer": "2",
+        "hint": "Terms are separated by plus or minus signs.",
+        "explanation": "The terms are 6x and -11, so there are two terms."
+    },
+    {
+        "chapterId": "introduction-to-linear-polynomials",
+        "question": "What is the constant term in 9x + 13?",
+        "answer": "13",
+        "hint": "The constant term has no variable.",
+        "explanation": "13 has no variable, so it is the constant term."
+    },
+    {
+        "chapterId": "introduction-to-linear-polynomials",
+        "question": "Evaluate 4x + 3 when x = -2.",
+        "answer": "-5",
+        "hint": "Substitute -2 wherever x appears.",
+        "explanation": "4(-2) + 3 = -8 + 3 = -5."
+    },
+    {
+        "chapterId": "introduction-to-linear-polynomials",
+        "question": "Solve 3x + 8 = 23. Find x.",
+        "answer": "5",
+        "hint": "Subtract 8 from both sides, then divide by 3.",
+        "explanation": "3x + 8 = 23; 3x = 15; x = 5."
+    },
+    {
+        "chapterId": "introduction-to-linear-polynomials",
+        "question": "What is the coefficient of x in -12x + 5?",
+        "answer": "-12",
+        "hint": "Include the sign with the coefficient.",
+        "explanation": "The coefficient multiplying x is -12."
+    },
+    {
+        "chapterId": "the-world-of-numbers",
+        "question": "Is 0 a rational number?",
+        "answer": "yes",
+        "accepted": [
+            "true"
+        ],
+        "hint": "Write 0 as a fraction with a non-zero denominator.",
+        "explanation": "0 = 0/1, so it is rational."
+    },
+    {
+        "chapterId": "the-world-of-numbers",
+        "question": "Express 0.25 as a fraction in simplest form.",
+        "answer": "1/4",
+        "hint": "Write 0.25 as 25/100 and simplify.",
+        "explanation": "25/100 = 1/4."
+    },
+    {
+        "chapterId": "the-world-of-numbers",
+        "question": "What is the smallest prime number?",
+        "answer": "2",
+        "hint": "A prime has exactly two positive factors.",
+        "explanation": "2 has factors 1 and 2 and is the smallest prime."
+    },
+    {
+        "chapterId": "the-world-of-numbers",
+        "question": "Is 1 a prime number?",
+        "answer": "no",
+        "accepted": [
+            "false"
+        ],
+        "hint": "A prime number has exactly two distinct positive factors.",
+        "explanation": "1 has only one positive factor, so it is not prime."
+    },
+    {
+        "chapterId": "the-world-of-numbers",
+        "question": "Evaluate (-3)².",
+        "answer": "9",
+        "hint": "Square means multiply the number by itself.",
+        "explanation": "(-3) × (-3) = 9."
+    },
+    {
+        "chapterId": "exploring-algebraic-identities",
+        "question": "Complete: (a - b)(a + b) = ?",
+        "answer": "a² - b²",
+        "accepted": [
+            "a^2-b^2"
+        ],
+        "hint": "This is the difference of two squares identity.",
+        "explanation": "(a-b)(a+b) = a² + ab - ab - b² = a² - b²."
+    },
+    {
+        "chapterId": "exploring-algebraic-identities",
+        "question": "Evaluate 51² using (a+b)².",
+        "answer": "2601",
+        "hint": "Write 51 as 50 + 1.",
+        "explanation": "(50+1)² = 50² + 2×50×1 + 1² = 2500+100+1 = 2601."
+    },
+    {
+        "chapterId": "exploring-algebraic-identities",
+        "question": "Evaluate 98 × 102 using an identity.",
+        "answer": "9996",
+        "hint": "Write it as (100-2)(100+2).",
+        "explanation": "(100-2)(100+2) = 100² - 2² = 10000 - 4 = 9996."
+    },
+    {
+        "chapterId": "exploring-algebraic-identities",
+        "question": "Expand (x + 3)².",
+        "answer": "x² + 6x + 9",
+        "accepted": [
+            "x^2+6x+9"
+        ],
+        "hint": "Use (a+b)² = a² + 2ab + b².",
+        "explanation": "x² + 2(x)(3) + 3² = x² + 6x + 9."
+    },
+    {
+        "chapterId": "exploring-algebraic-identities",
+        "question": "Expand (2p - 5)².",
+        "answer": "4p² - 20p + 25",
+        "accepted": [
+            "4p^2-20p+25"
+        ],
+        "hint": "Use (a-b)² = a² - 2ab + b².",
+        "explanation": "(2p)² - 2(2p)(5) + 5² = 4p² - 20p + 25."
+    },
+    {
+        "chapterId": "circles",
+        "question": "A circle has radius 5 cm. Find its diameter.",
+        "answer": "10",
+        "hint": "Diameter is twice the radius.",
+        "explanation": "d = 2r = 2×5 = 10 cm."
+    },
+    {
+        "chapterId": "circles",
+        "question": "Find the circumference of a circle with diameter 14 cm. Use π = 22/7.",
+        "answer": "44",
+        "hint": "Use C = πd.",
+        "explanation": "C = (22/7)×14 = 44 cm."
+    },
+    {
+        "chapterId": "circles",
+        "question": "Find the area of a circle with radius 7 cm. Use π = 22/7.",
+        "answer": "154",
+        "hint": "Use A = πr².",
+        "explanation": "A = (22/7)×7×7 = 154 cm²."
+    },
+    {
+        "chapterId": "circles",
+        "question": "A sector is half a circle. Find its central angle.",
+        "answer": "180",
+        "hint": "A full turn is 360 degrees.",
+        "explanation": "360° ÷ 2 = 180°."
+    },
+    {
+        "chapterId": "circles",
+        "question": "A circle has circumference 31.4 cm. Using π = 3.14, find its diameter.",
+        "answer": "10",
+        "hint": "Rearrange C = πd to d = C/π.",
+        "explanation": "d = 31.4 ÷ 3.14 = 10 cm."
+    },
+    {
+        "chapterId": "measuring-space-perimeter-and-area",
+        "question": "Find the area of a triangle with base 9 cm and perpendicular height 8 cm.",
+        "answer": "36",
+        "hint": "Use half the product of base and height.",
+        "explanation": "A = 1/2×9×8 = 36 cm²."
+    },
+    {
+        "chapterId": "measuring-space-perimeter-and-area",
+        "question": "Find the perimeter of a triangle with sides 6 cm, 7 cm and 9 cm.",
+        "answer": "22",
+        "hint": "Add all three side lengths.",
+        "explanation": "P = 6+7+9 = 22 cm."
+    },
+    {
+        "chapterId": "measuring-space-perimeter-and-area",
+        "question": "Find the area of an equilateral triangle with side 2 cm. Give the exact answer.",
+        "answer": "√3",
+        "accepted": [
+            "sqrt3"
+        ],
+        "hint": "Use A = (√3/4)a².",
+        "explanation": "A = (√3/4)×2² = √3 cm²."
+    },
+    {
+        "chapterId": "measuring-space-perimeter-and-area",
+        "question": "The semi-perimeter of a triangle is 12 cm. What is its perimeter?",
+        "answer": "24",
+        "hint": "Perimeter is twice the semi-perimeter.",
+        "explanation": "P = 2s = 2×12 = 24 cm."
+    },
+    {
+        "chapterId": "measuring-space-perimeter-and-area",
+        "question": "Using Heron’s formula, find the area of a triangle with sides 3 cm, 4 cm and 5 cm.",
+        "answer": "6",
+        "hint": "First calculate s = (3+4+5)/2.",
+        "explanation": "s=6; area = √[6(3)(2)(1)] = √36 = 6 cm²."
+    },
+    {
+        "chapterId": "introduction-to-probability",
+        "question": "A fair die is rolled. What is the probability of getting a 6?",
+        "answer": "1/6",
+        "hint": "There is one favourable face out of six.",
+        "explanation": "P(6) = 1/6."
+    },
+    {
+        "chapterId": "introduction-to-probability",
+        "question": "A bag has 3 red and 2 blue balls. What is P(blue) when one ball is chosen at random?",
+        "answer": "2/5",
+        "hint": "Favourable blue balls = 2; total balls = 5.",
+        "explanation": "P(blue) = 2/5."
+    },
+    {
+        "chapterId": "introduction-to-probability",
+        "question": "What is the probability of a certain event?",
+        "answer": "1",
+        "hint": "A certain event always occurs.",
+        "explanation": "P(certain event) = 1."
+    },
+    {
+        "chapterId": "introduction-to-probability",
+        "question": "A die is rolled. Find the probability of getting an odd number.",
+        "answer": "1/2",
+        "hint": "Odd faces are 1, 3 and 5.",
+        "explanation": "There are 3 favourable outcomes out of 6: 3/6 = 1/2."
+    },
+    {
+        "chapterId": "introduction-to-probability",
+        "question": "A coin is tossed 80 times and heads appears 44 times. Find experimental P(heads).",
+        "answer": "11/20",
+        "hint": "Divide heads count by total tosses and simplify.",
+        "explanation": "P(heads) = 44/80 = 11/20."
+    },
+    {
+        "chapterId": "sequences-and-progressions",
+        "question": "Find the common difference of the AP 20, 17, 14, 11, …",
+        "answer": "-3",
+        "hint": "Subtract a term from the next term.",
+        "explanation": "17 - 20 = -3, so d = -3."
+    },
+    {
+        "chapterId": "sequences-and-progressions",
+        "question": "Find the 7th term of the AP 2, 5, 8, 11, …",
+        "answer": "20",
+        "hint": "Use aₙ = a + (n-1)d.",
+        "explanation": "a=2, d=3; a₇ = 2 + 6×3 = 20."
+    },
+    {
+        "chapterId": "sequences-and-progressions",
+        "question": "Find the common ratio of the GP 81, 27, 9, 3, …",
+        "answer": "1/3",
+        "hint": "Divide a term by the preceding term.",
+        "explanation": "r = 27/81 = 1/3."
+    },
+    {
+        "chapterId": "sequences-and-progressions",
+        "question": "Find the 4th term of the GP 2, 6, 18, …",
+        "answer": "54",
+        "hint": "Multiply each term by the common ratio 3.",
+        "explanation": "2, 6, 18, 54; the fourth term is 54."
+    },
+    {
+        "chapterId": "sequences-and-progressions",
+        "question": "Is 5, 10, 20, 40, … an AP or a GP?",
+        "answer": "GP",
+        "hint": "Check whether differences or ratios stay constant.",
+        "explanation": "The ratio is 2 each time, so it is a GP."
+    },
+    {
+        "chapterId": "propositions-and-converses",
+        "question": "True or false: The converse of a true statement must always be true.",
+        "answer": "false",
+        "accepted": [
+            "no"
+        ],
+        "hint": "A true conditional can have a false converse.",
+        "explanation": "Example: divisible by 4 implies even, but even does not imply divisible by 4."
+    },
+    {
+        "chapterId": "propositions-and-converses",
+        "question": "Write the converse: If a number is divisible by 8, then it is divisible by 4.",
+        "answer": "If a number is divisible by 4, then it is divisible by 8.",
+        "hint": "Interchange the hypothesis and conclusion.",
+        "explanation": "The converse swaps the two parts: divisible by 4 → divisible by 8."
+    },
+    {
+        "chapterId": "propositions-and-converses",
+        "question": "Is “Please close the door” a proposition?",
+        "answer": "no",
+        "accepted": [
+            "false"
+        ],
+        "hint": "A proposition must be a declarative statement with a truth value.",
+        "explanation": "This is a command, so it is not true or false."
+    },
+    {
+        "chapterId": "propositions-and-converses",
+        "question": "True or false: If an integer is divisible by 10, it is divisible by 5.",
+        "answer": "true",
+        "accepted": [
+            "yes"
+        ],
+        "hint": "Every multiple of 10 is also a multiple of 5.",
+        "explanation": "10k = 5(2k), so the statement is true."
+    },
+    {
+        "chapterId": "propositions-and-converses",
+        "question": "Give a counterexample to “If a number is even, then it is divisible by 4.”",
+        "answer": "2",
+        "hint": "Choose an even integer that is not a multiple of 4.",
+        "explanation": "2 is even but 2 is not divisible by 4."
+    },
+    {
+        "chapterId": "understanding-data",
+        "question": "Find the mean of 4, 8, 10 and 14.",
+        "answer": "9",
+        "hint": "Add the values and divide by 4.",
+        "explanation": "Mean = (4+8+10+14)/4 = 36/4 = 9."
+    },
+    {
+        "chapterId": "understanding-data",
+        "question": "Find the median of 3, 9, 5, 1, 7.",
+        "answer": "5",
+        "hint": "Arrange the data in ascending order first.",
+        "explanation": "1, 3, 5, 7, 9; the middle value is 5."
+    },
+    {
+        "chapterId": "understanding-data",
+        "question": "Find the mode of 2, 3, 3, 4, 5, 3, 6.",
+        "answer": "3",
+        "hint": "Find the value that occurs most often.",
+        "explanation": "3 occurs three times, more than any other value."
+    },
+    {
+        "chapterId": "understanding-data",
+        "question": "Find the range of 4, 12, 7, 15, 9.",
+        "answer": "11",
+        "hint": "Subtract the smallest value from the largest.",
+        "explanation": "Range = 15 - 4 = 11."
+    },
+    {
+        "chapterId": "understanding-data",
+        "question": "If the mean of 5 numbers is 8, what is their total?",
+        "answer": "40",
+        "hint": "Total = mean × number of observations.",
+        "explanation": "Total = 8×5 = 40."
+    },
+    {
+        "chapterId": "world-of-algorithms",
+        "question": "Which algorithm property means that it must eventually stop?",
+        "answer": "finiteness",
+        "accepted": [
+            "finite"
+        ],
+        "hint": "A valid algorithm cannot run forever.",
+        "explanation": "Finiteness means it terminates after a limited number of steps."
+    },
+    {
+        "chapterId": "world-of-algorithms",
+        "question": "What is the first stage in a simple input-process-output algorithm?",
+        "answer": "input",
+        "hint": "Identify what data is supplied before processing.",
+        "explanation": "The input stage receives the data used by the algorithm."
+    },
+    {
+        "chapterId": "world-of-algorithms",
+        "question": "An algorithm adds 7 and 12. What is its output?",
+        "answer": "19",
+        "hint": "Add the two input values.",
+        "explanation": "7 + 12 = 19."
+    },
+    {
+        "chapterId": "world-of-algorithms",
+        "question": "True or false: An algorithm should have clear and unambiguous steps.",
+        "answer": "true",
+        "accepted": [
+            "yes"
+        ],
+        "hint": "Each instruction should have a definite meaning.",
+        "explanation": "True. Unambiguous steps can be followed consistently."
+    },
+    {
+        "chapterId": "quadrilaterals",
+        "question": "Find the perimeter of a rectangle of length 12 cm and breadth 5 cm.",
+        "answer": "34",
+        "hint": "Use P = 2(l+b).",
+        "explanation": "P = 2(12+5) = 34 cm."
+    },
+    {
+        "chapterId": "quadrilaterals",
+        "question": "A rhombus has diagonals 12 cm and 10 cm. Find its area.",
+        "answer": "60",
+        "hint": "Area of a rhombus = half the product of its diagonals.",
+        "explanation": "A = 1/2×12×10 = 60 cm²."
+    },
+    {
+        "chapterId": "quadrilaterals",
+        "question": "Find the area of a parallelogram with base 11 cm and height 4 cm.",
+        "answer": "44",
+        "hint": "Use base × perpendicular height.",
+        "explanation": "A = 11×4 = 44 cm²."
+    },
+    {
+        "chapterId": "quadrilaterals",
+        "question": "A trapezium has parallel sides 7 cm and 13 cm and height 5 cm. Find its area.",
+        "answer": "50",
+        "hint": "Use half the sum of parallel sides times height.",
+        "explanation": "A = 1/2(7+13)×5 = 50 cm²."
+    },
+    {
+        "chapterId": "two-variables-one-line",
+        "question": "Does (3, 2) satisfy x + 2y = 7?",
+        "answer": "yes",
+        "accepted": [
+            "true"
+        ],
+        "hint": "Substitute x=3 and y=2.",
+        "explanation": "3 + 2(2) = 7, so yes."
+    },
+    {
+        "chapterId": "two-variables-one-line",
+        "question": "If y = 3 in 2x + y = 11, find x.",
+        "answer": "4",
+        "hint": "Substitute y=3 and isolate x.",
+        "explanation": "2x+3=11; 2x=8; x=4."
+    },
+    {
+        "chapterId": "two-variables-one-line",
+        "question": "Which point lies on y = x + 1: (2,3) or (2,4)?",
+        "answer": "(2,3)",
+        "accepted": [
+            "2,3"
+        ],
+        "hint": "Substitute x=2 into the equation.",
+        "explanation": "y = 2+1 = 3, so (2,3) lies on the line."
+    },
+    {
+        "chapterId": "two-variables-one-line",
+        "question": "How many ordered pairs satisfy a linear equation in two variables (in general over real numbers)?",
+        "answer": "infinitely many",
+        "accepted": [
+            "infinite"
+        ],
+        "hint": "A straight line contains infinitely many points.",
+        "explanation": "Each point on the line is a solution, so there are infinitely many real ordered-pair solutions."
+    },
+    {
+        "chapterId": "surface-area-and-volume",
+        "question": "Find the volume of a cube with side 4 cm.",
+        "answer": "64",
+        "hint": "Volume = side³.",
+        "explanation": "V = 4×4×4 = 64 cm³."
+    },
+    {
+        "chapterId": "surface-area-and-volume",
+        "question": "Find the total surface area of a cube with side 5 cm.",
+        "answer": "150",
+        "hint": "A cube has six square faces.",
+        "explanation": "TSA = 6×5² = 6×25 = 150 cm²."
+    },
+    {
+        "chapterId": "surface-area-and-volume",
+        "question": "Find the volume of a cuboid measuring 6 cm × 4 cm × 3 cm.",
+        "answer": "72",
+        "hint": "Multiply length, breadth and height.",
+        "explanation": "V = 6×4×3 = 72 cm³."
+    },
+    {
+        "chapterId": "surface-area-and-volume",
+        "question": "Find the lateral surface area of a cube with side 3 cm.",
+        "answer": "36",
+        "hint": "A cube has four lateral square faces.",
+        "explanation": "LSA = 4a² = 4×9 = 36 cm²."
+    },
+    {
+        "chapterId": "surface-area-and-volume",
+        "question": "A cuboid has volume 120 cm³, length 6 cm and breadth 5 cm. Find its height.",
+        "answer": "4",
+        "hint": "Height = volume ÷ (length × breadth).",
+        "explanation": "h = 120/(6×5) = 120/30 = 4 cm."
+    }
+];
+    questionBank.push.apply(questionBank, additionalQuestionBank);
+
     const mediumQuestionIds = new Set(["Find the value of 3x + 2 when x = 4.", "Find the mean of 5, 7 and 9.", "Find the area of a triangle with base 12 cm and height 5 cm.", "Find the median of 2, 8, 4, 6, 10.", "Find the common difference of 11, 15, 19, 23, …", "Find the 5th term of the GP 3, 6, 12, 24, …", "Find the circumference of a circle with radius 7 cm. Use π = 22/7.", "Find the area of an equilateral triangle with side 4 cm, to 2 decimal places."]);
     const hardQuestionIds = new Set(["Evaluate 99² using an identity.", "Find the area of a triangle with sides 5 cm, 6 cm and 7 cm using Heron's formula, to 2 decimal places.", "Find the 10th term of the AP 3, 7, 11, 15, …", "Find the 6th term of the GP 5, 10, 20, 40, …", "Solve 5x − 7 = 18. Find x."]);
-    questionBank.forEach(function (question) {
-        question.difficulty = hardQuestionIds.has(question.question) ? "hard" : mediumQuestionIds.has(question.question) ? "medium" : "easy";
+    const additionalHardPattern = /Heron|counterexample|converse|using an identity|Evaluate 51²|Evaluate 98|Expand \(|How many ordered pairs|Find the 7th term|common ratio|digit sum|divisible by both|cuboid has volume/i;
+    const additionalMediumPattern = /Find |Evaluate |Solve |Complete:|Does \(|Which point lies|Find the common difference|Find the median|Find the mean|Find the mode/i;
+    questionBank.forEach(function (question, index) {
+        question.id = question.id || "mathlab-q-" + String(index + 1).padStart(3, "0");
+        if (!question.difficulty) {
+            question.difficulty = hardQuestionIds.has(question.question) || additionalHardPattern.test(question.question)
+                ? "hard"
+                : mediumQuestionIds.has(question.question) || additionalMediumPattern.test(question.question)
+                    ? "medium"
+                    : "easy";
+        }
     });
+    // The same question is not selected again in a new random session until
+    // the unseen pool for the selected syllabus/chapter has been used up.
+    const RECENT_QUESTION_KEY = "mathlab_recent_question_ids_v2";
+    function readRecentQuestionIds() {
+        try { return JSON.parse(localStorage.getItem(RECENT_QUESTION_KEY) || "[]"); }
+        catch (error) { return []; }
+    }
+    function selectFreshQuestions(eligible, count) {
+        const recent = new Set(readRecentQuestionIds());
+        let fresh = shuffleList(eligible.filter(q => !recent.has(q.id)));
+        let selected = fresh.slice(0, Math.min(count, eligible.length));
+        if (selected.length < Math.min(count, eligible.length)) {
+            const selectedIds = new Set(selected.map(q => q.id));
+            const refill = shuffleList(eligible.filter(q => !selectedIds.has(q.id)));
+            selected = selected.concat(refill.slice(0, Math.min(count, eligible.length) - selected.length));
+        }
+        try {
+            const history = readRecentQuestionIds().concat(selected.map(q => q.id));
+            localStorage.setItem(RECENT_QUESTION_KEY, JSON.stringify(history.slice(-questionBank.length)));
+        } catch (error) { /* Private browsing may block storage; session still works. */ }
+        return selected;
+    }
 
 
     // =====================================================
@@ -409,9 +957,22 @@ document.addEventListener("DOMContentLoaded", function () {
     function isCorrectAnswer(userAnswer, question) {
         const user = normalizeAnswer(userAnswer);
         const accepted = [question.answer].concat(question.accepted || []);
-        return accepted.some(function (answer) {
-            return normalizeAnswer(answer) === user;
-        });
+        if (accepted.some(function (answer) { return normalizeAnswer(answer) === user; })) return true;
+
+        // Accept a correct numeric value with its correct measurement unit,
+        // while rejecting mismatched units (for example cm² for a volume).
+        const expected = Number(String(question.answer).replace(/,/g, ""));
+        if (!Number.isFinite(expected)) return false;
+        const match = user.match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(.*)$/);
+        if (!match || Number(match[1]) !== expected) return false;
+        const suppliedUnit = match[2];
+        if (!suppliedUnit) return true;
+        const wording = String(question.question || "").toLowerCase();
+        let expectedUnit = "";
+        if (/\bvolume\b|cm\^3|cubic/.test(wording)) expectedUnit = "cm^3";
+        else if (/\barea\b|cm\^2|square centimet/.test(wording)) expectedUnit = "cm^2";
+        else if (/\b(perimeter|circumference|diameter|radius|height|length|breadth|side)\b|\bcm\b/.test(wording)) expectedUnit = "cm";
+        return Boolean(expectedUnit && suppliedUnit === expectedUnit);
     }
 
     function getQuestionChapterName(question) {
@@ -691,7 +1252,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         state.practiceSettings = { chapterId, difficulty, count };
-        state.practiceSession = { questions: shuffleList(eligible).slice(0, Math.min(count, eligible.length)), index: 0 };
+        state.practiceSession = { questions: selectFreshQuestions(eligible, count), index: 0 };
         state.practiceQuestion = state.practiceSession.questions[0];
         state.practiceAnswered = false;
         state.practiceHintShown = false;
@@ -712,9 +1273,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <label>Difficulty<select id="practice-difficulty"><option value="all">All difficulties</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
                             <label>Number of questions<select id="practice-count"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="15">15 questions</option><option value="20">20 questions</option><option value="30">30 questions</option><option value="50">50 questions</option></select></label>
                         </div>
-                        <p class="challenge-config-note">The question set is drawn from the available question bank. If a chapter has fewer questions than requested, MathLab uses all available questions without repeating them. If a chapter has no questions tagged at the selected difficulty yet, its available questions are used instead.</p>
+                        <p class="challenge-config-note">The question set is drawn from the 128-question code bank. MathLab avoids questions used in recent sessions and never repeats a question inside one set. If a selected chapter has fewer questions than requested, it uses all available questions without duplicates.</p>
                         <button type="button" data-action="start-practice">Start practice</button>
-                        <p class="bank-count-note">Question bank: ${questionBank.length} questions across ${curriculum.chapters.length} syllabus chapters.</p>
+                        <p class="bank-count-note">Question bank: ${questionBank.length} questions across ${curriculum.chapters.length} syllabus chapters. MathLab prioritises questions not used in your recent sessions; repeats are possible only after the selected pool is exhausted.</p>
                     </section>
                 </div>`;
             return;
@@ -770,7 +1331,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function shuffleQuestions(count, difficulty, chapterId) {
         const eligible = getFilteredQuestions(chapterId || "all", difficulty || "all");
-        return shuffleList(eligible).slice(0, Math.min(count, eligible.length));
+        return selectFreshQuestions(eligible, count);
     }
 
     function getMCQOptions(question) {
@@ -979,7 +1540,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <label>Difficulty<select id="challenge-difficulty"><option value="all">Mixed</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
                             <label>Points per question<select id="challenge-points"><option>1</option><option>2</option><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>50</option></select></label>
                         </div>
-                        <p class="challenge-config-note">Choose a single chapter or the entire Class 9 syllabus. The maximum score is calculated from your selected question count and points per question. If the selected chapter has fewer questions, MathLab uses all available questions without repeating them. If that chapter has no questions tagged at the chosen difficulty yet, its available questions are used instead.</p>
+                        <p class="challenge-config-note">Choose a single chapter or the entire Class 9 syllabus. The maximum score is calculated from your selected question count and points per question. MathLab avoids questions used in recent sessions and never repeats a question within one challenge. If a selected chapter has fewer questions than requested, it uses all available questions without duplicates.</p>
                         <button type="button" data-action="start-challenge">Start Challenge</button>
 
                     </section>
