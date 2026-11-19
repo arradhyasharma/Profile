@@ -4,13 +4,11 @@ require("dotenv").config();
 const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const path = require("path");
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const API_KEY = process.env.GEMINI_API_KEY;
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
-const PROJECT_ROOT = path.resolve(__dirname, "..");
 
 app.disable("x-powered-by");
 app.use(helmet({ contentSecurityPolicy: false }));
@@ -96,8 +94,6 @@ app.post("/api/chat", chatLimiter, async function (req, res) {
         return res.status(504).json({ error: "The AI Tutor request timed out or could not reach Gemini. Please try again." });
     }
 });
-
-app.use(express.static(PROJECT_ROOT, { extensions: ["html"] }));
 
 app.listen(PORT, function () {
     console.log("MathLab server running at http://localhost:" + PORT);
