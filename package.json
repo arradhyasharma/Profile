@@ -4,7 +4,7 @@
   "private": true,
   "description": "MathLab website with a private Gemini-powered AI Tutor backend",
   "scripts": {
-    "start": "server.js",
+    "start": "node server.js",
     "dev": "node --watch server/server.js"
   },
   "engines": {
