@@ -126,3 +126,7 @@ app.listen(PORT, function () {
     console.log("MathLab server running at http://localhost:" + PORT);
     console.log("Gemini API key configured:", Boolean(API_KEY));
 });
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
