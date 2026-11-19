@@ -996,7 +996,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "labs", label: "Math Labs" },
         { id: "practice", label: "Practice" },
         { id: "challenge", label: "Challenge Mode" },
-        { id: "formulas", label: "Formula Library" }
+        { id: "formulas", label: "Formula Library" },
+        { id: "tutor", label: "AI Tutor" }
     ];
 
     function createWorkspaceNavigation() {
@@ -1703,176 +1704,234 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =====================================================
-    // FORMULA LIBRARY
-    // Starter reference list, not an exhaustive syllabus.
+    // FORMULA LIBRARY — supplied material + researched Ch. 11–14
+    // Chapters 3 and 7 are intentionally blank, as requested.
     // =====================================================
 
     const formulas = [
+        // Chapter 1 — supplied sheet topics
+        { chapterId: "orienting-yourself-coordinates", name: "Midpoint formula", formula: "M = ((x₁ + x₂)/2, (y₁ + y₂)/2)", description: "Midpoint of the segment joining (x₁, y₁) and (x₂, y₂).", sourceType: "supplied" },
+        { chapterId: "orienting-yourself-coordinates", name: "Distance formula", formula: "d = √[(x₂ − x₁)² + (y₂ − y₁)²]", description: "Distance between two points in the coordinate plane.", sourceType: "supplied" },
 
-        {
-            chapterId: "circles",
-            name: "Diameter of a circle",
-            formula: "d = 2r",
-            description: "Diameter is twice the radius."
-        },
+        // Chapter 2 — supplied sheet topic
+        { chapterId: "introduction-to-linear-polynomials", name: "Linear polynomial form", formula: "p(x) = ax + b", description: "A linear polynomial in one variable, where a and b are constants and a ≠ 0 for degree 1.", sourceType: "supplied" },
 
-        {
-            chapterId: "circles",
-            name: "Circumference of a circle",
-            formula: "C = 2πr",
-            description: "Circumference in terms of radius."
-        },
+        // Chapter 4 — standard identities in the supplied identity section.
+        // Verify this list against the original sheet before treating it as exhaustive.
+        { chapterId: "exploring-algebraic-identities", name: "Square of a sum", formula: "(a + b)² = a² + 2ab + b²", description: "Expand the square of a sum.", sourceType: "supplied-topic" },
+        { chapterId: "exploring-algebraic-identities", name: "Square of a difference", formula: "(a − b)² = a² − 2ab + b²", description: "Expand the square of a difference.", sourceType: "supplied-topic" },
+        { chapterId: "exploring-algebraic-identities", name: "Difference of two squares", formula: "a² − b² = (a − b)(a + b)", description: "Factorise a difference of two squares.", sourceType: "supplied-topic" },
+        { chapterId: "exploring-algebraic-identities", name: "Product of sum and difference", formula: "(a + b)(a − b) = a² − b²", description: "Equivalent product form of the difference-of-squares identity.", sourceType: "supplied-topic" },
+        { chapterId: "exploring-algebraic-identities", name: "Square of three terms", formula: "(a + b + c)² = a² + b² + c² + 2ab + 2bc + 2ca", description: "Expand the square of a sum of three terms.", sourceType: "supplied-topic" },
 
-        {
-            chapterId: "measuring-space-perimeter-and-area",
-            name: "Perimeter of a rectangle",
-            formula: "P = 2(l + b)",
-            description: "Twice the sum of length and breadth."
-        },
+        // Chapter 5 — supplied sheet topics
+        { chapterId: "circles", name: "Area of a circle", formula: "A = πr²", description: "Area enclosed by a circle of radius r.", sourceType: "supplied" },
+        { chapterId: "circles", name: "Circumference of a circle", formula: "C = 2πr = πd", description: "Distance around a circle; d is the diameter.", sourceType: "supplied" },
 
-        {
-            chapterId: "measuring-space-perimeter-and-area",
-            name: "Area of a rectangle",
-            formula: "A = l × b",
-            description: "Length multiplied by breadth."
-        },
+        // Chapter 6 — supplied sheet categories
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a square", formula: "P = 4a", description: "a is the side length.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a rectangle", formula: "P = 2(l + b)", description: "l is length and b is breadth.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a trapezium", formula: "P = a + b + c + d", description: "Sum of all four side lengths.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a rhombus", formula: "P = 4a", description: "All four sides have equal length a.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a parallelogram", formula: "P = 2(a + b)", description: "a and b are the lengths of adjacent sides.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a semicircle", formula: "P = πr + 2r", description: "Curved half-circumference plus the diameter.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a quadrant", formula: "P = (πr/2) + 2r", description: "Quarter-circle arc plus two radii.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Perimeter of a triangle", formula: "P = a + b + c", description: "Sum of the three side lengths.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a square", formula: "A = a²", description: "a is the side length.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a rectangle", formula: "A = l × b", description: "Length multiplied by breadth.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a trapezium", formula: "A = ½(a + b)h", description: "a and b are the parallel sides; h is the perpendicular height.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a rhombus", formula: "A = ½d₁d₂", description: "d₁ and d₂ are the diagonals.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a parallelogram", formula: "A = bh", description: "b is the base and h is the perpendicular height.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a semicircle", formula: "A = ½πr²", description: "Half the area of a circle.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a quadrant", formula: "A = ¼πr²", description: "One quarter of the area of a circle.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a minor sector", formula: "A = (θ/360°)πr²", description: "θ is the central angle of the minor sector.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a major sector", formula: "A = ((360° − θ)/360°)πr²", description: "θ is the central angle of the corresponding minor sector.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a minor segment", formula: "Area = area of minor sector − area of triangle", description: "Subtract the triangle formed by the two radii and chord from the minor sector.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of an equilateral triangle", formula: "A = (√3/4)a²", description: "a is the side length.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Heron's formula", formula: "A = √[s(s − a)(s − b)(s − c)],  s = (a + b + c)/2", description: "Area of a triangle with side lengths a, b and c; s is the semi-perimeter.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Area of a right-angled triangle", formula: "A = ½ × base × height", description: "The perpendicular sides can be used as base and height.", sourceType: "supplied" },
+        { chapterId: "measuring-space-perimeter-and-area", name: "Length of an arc", formula: "L = (θ/360°) × 2πr", description: "θ is the central angle subtended by the arc.", sourceType: "supplied" },
 
-        {
-            chapterId: "measuring-space-perimeter-and-area",
-            name: "Area of a square",
-            formula: "A = a²",
-            description: "Side multiplied by itself."
-        },
+        // Chapter 8 — supplied sheet topics (AP and GP)
+        { chapterId: "sequences-and-progressions", name: "nth term of an AP", formula: "aₙ = a + (n − 1)d", description: "a is the first term and d is the common difference.", sourceType: "supplied" },
+        { chapterId: "sequences-and-progressions", name: "Sum of n terms of an AP", formula: "Sₙ = (n/2)[2a + (n − 1)d] = (n/2)(a + l)", description: "a is the first term, d the common difference and l the last term.", sourceType: "supplied" },
+        { chapterId: "sequences-and-progressions", name: "nth term of a GP", formula: "aₙ = arⁿ⁻¹", description: "a is the first term and r is the common ratio.", sourceType: "supplied" },
+        { chapterId: "sequences-and-progressions", name: "Sum of n terms of a GP", formula: "Sₙ = a(rⁿ − 1)/(r − 1), r ≠ 1", description: "For a finite GP; an equivalent sign-reversed form is valid when r < 1.", sourceType: "supplied" },
 
-        {
-            chapterId: "quadrilaterals",
-            name: "Interior angle sum of a quadrilateral",
-            formula: "360°",
-            description: "The interior angles add up to 360 degrees."
-        },
+        // Chapter 10 — supplied sheet topic
+        { chapterId: "understanding-data", name: "Weighted mean", formula: "x̄w = (w₁x₁ + w₂x₂ + … + wₙxₙ)/(w₁ + w₂ + … + wₙ)", description: "Multiply each value by its weight, add the products, then divide by the sum of the weights.", sourceType: "supplied" },
 
-        {
-            chapterId: "exploring-algebraic-identities",
-            name: "Square of a sum",
-            formula: "(a + b)² = a² + 2ab + b²",
-            description: "A standard algebraic identity."
-        },
+        // Chapter 11 — independently researched from Ganita Manjari Ch. 11
+        { chapterId: "world-of-algorithms", name: "Euclid's subtraction algorithm", formula: "gcd(m, n) = gcd(n, m − n), for m ≥ n", description: "Replacing the larger number by its difference with the smaller preserves the GCD.", sourceType: "researched" },
+        { chapterId: "world-of-algorithms", name: "GCD stopping rule", formula: "gcd(m, 0) = m", description: "The subtraction or division algorithm stops when the second number becomes zero.", sourceType: "researched" },
+        { chapterId: "world-of-algorithms", name: "Āryabhaṭa's division algorithm", formula: "gcd(m, n) = gcd(n, m mod n), n > 0", description: "Replace the pair by the divisor and the remainder until the remainder is zero.", sourceType: "researched" },
+        { chapterId: "world-of-algorithms", name: "Division algorithm relation", formula: "m = qn + r,  0 ≤ r < n", description: "q is the quotient and r is the remainder when m is divided by n (n > 0).", sourceType: "researched" },
+        { chapterId: "world-of-algorithms", name: "LCM–GCD relation", formula: "lcm(m, n) × gcd(m, n) = m × n", description: "For positive integers m and n.", sourceType: "researched" },
 
-        {
-            chapterId: "exploring-algebraic-identities",
-            name: "Square of a difference",
-            formula: "(a - b)² = a² - 2ab + b²",
-            description: "A standard algebraic identity."
-        },
+        // Chapter 12 — independently researched properties and theorems
+        { chapterId: "quadrilaterals", name: "Angle sum of a quadrilateral", formula: "∠A + ∠B + ∠C + ∠D = 360°", description: "The interior angles of a simple quadrilateral add to 360°.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Parallelogram: opposite sides and angles", formula: "AB = CD;  BC = AD;  ∠A = ∠C;  ∠B = ∠D", description: "Opposite sides and opposite angles of a parallelogram are equal.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Parallelogram: adjacent angles", formula: "Adjacent angles add to 180°", description: "Any two consecutive interior angles of a parallelogram are supplementary.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Parallelogram diagonals", formula: "AO = OC;  BO = OD", description: "The diagonals of a parallelogram bisect each other at their intersection O.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Midpoint theorem", formula: "DE ∥ BC;  DE = ½BC", description: "The segment joining the midpoints of two sides of a triangle is parallel to the third side and half its length.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Midpoint theorem for a trapezium", formula: "EF = ½(AB + CD)", description: "If AB ∥ CD and E and F are the midpoints of the non-parallel sides, EF is the average of the parallel sides.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Centroid theorem", formula: "AG : GD = 2 : 1", description: "The centroid G divides each median in the ratio 2:1, measured from the vertex A.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Area of the midpoint triangle", formula: "Area(△PQR) = ¼ Area(△ABC)", description: "Joining the three side midpoints of a triangle forms a smaller triangle with one-quarter of its area.", sourceType: "researched" },
+        { chapterId: "quadrilaterals", name: "Varignon’s theorem", formula: "Perimeter of midpoint parallelogram = AC + BD", description: "The quadrilateral formed by joining the side midpoints is a parallelogram; its perimeter equals the sum of the original diagonals.", sourceType: "researched" },
 
-        {
-            chapterId: "exploring-algebraic-identities",
-            name: "Difference of two squares",
-            formula: "a² - b² = (a - b)(a + b)",
-            description: "Factorisation identity."
-        },
+        // Chapter 13 — independently researched linear-equation relations
+        { chapterId: "two-variables-one-line", name: "Standard form", formula: "ax + by + c = 0;  a and b are not both 0", description: "General form of a linear equation in two variables.", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "Slope-intercept form", formula: "y = mx + d", description: "m is the slope and d is the y-intercept.", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "Slope from two points", formula: "m = (y₂ − y₁)/(x₂ − x₁),  x₂ ≠ x₁", description: "Rise divided by run for two distinct points on a non-vertical line.", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "Slope in standard form", formula: "m = −a/b,  b ≠ 0", description: "For ax + by + c = 0; the y-intercept is −c/b.", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "x-intercept", formula: "Set y = 0 and solve for x", description: "The point where the line meets the x-axis.", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "y-intercept", formula: "Set x = 0 and solve for y", description: "The point where the line meets the y-axis.", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "Pair of linear equations: unique solution", formula: "a₁/a₂ ≠ b₁/b₂", description: "For a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0, the lines intersect at one point (assuming denominators are non-zero).", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "Pair of linear equations: infinitely many solutions", formula: "a₁/a₂ = b₁/b₂ = c₁/c₂", description: "The two equations represent the same line (assuming denominators are non-zero).", sourceType: "researched" },
+        { chapterId: "two-variables-one-line", name: "Pair of linear equations: no solution", formula: "a₁/a₂ = b₁/b₂ ≠ c₁/c₂", description: "The lines are parallel and distinct (assuming denominators are non-zero).", sourceType: "researched" },
 
-        {
-            chapterId: "surface-area-and-volume",
-            name: "Volume of a cube",
-            formula: "V = a³",
-            description: "Side multiplied by itself three times."
-        },
-
-        {
-            chapterId: "surface-area-and-volume",
-            name: "Volume of a cuboid",
-            formula: "V = l × b × h",
-            description: "Length multiplied by breadth and height."
-        },
-
-        {
-            chapterId: "introduction-to-probability",
-            name: "Basic probability",
-            formula: "P(E) = Favourable outcomes / Total equally likely outcomes",
-            description: "For a finite set of equally likely outcomes."
-        }
-
+        // Chapter 14 — independently researched solid mensuration formulas
+        { chapterId: "surface-area-and-volume", name: "Cuboid: total surface area", formula: "TSA = 2(lb + bh + hl)", description: "l, b and h are length, breadth and height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cuboid: volume", formula: "V = lbh", description: "Length × breadth × height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cube: total surface area", formula: "TSA = 6a²", description: "a is the edge length.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cube: volume", formula: "V = a³", description: "a is the edge length.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cylinder: curved surface area", formula: "CSA = 2πrh", description: "r is radius and h is height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cylinder: total surface area", formula: "TSA = 2πr(h + r)", description: "For a closed right circular cylinder.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cylinder: volume", formula: "V = πr²h", description: "Base area multiplied by height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cone: slant height", formula: "l² = r² + h²", description: "l is slant height, r is radius and h is perpendicular height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cone: curved surface area", formula: "CSA = πrl", description: "l is the slant height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cone: total surface area", formula: "TSA = πr(l + r)", description: "For a cone with a circular base.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Cone: volume", formula: "V = ⅓πr²h", description: "One-third of the volume of a cylinder with the same base and height.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Pyramid: volume", formula: "V = ⅓ × base area × height", description: "For a pyramid with any polygonal base.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Sphere: surface area", formula: "S = 4πr²", description: "Surface area of a sphere of radius r.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Sphere: volume", formula: "V = ⁴⁄₃πr³", description: "Volume of a sphere of radius r.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Hemisphere: curved surface area", formula: "CSA = 2πr²", description: "Excludes the circular base.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Hemisphere: total surface area", formula: "TSA = 3πr²", description: "Includes the circular base.", sourceType: "researched" },
+        { chapterId: "surface-area-and-volume", name: "Hemisphere: volume", formula: "V = ⅔πr³", description: "Half the volume of a sphere.", sourceType: "researched" }
     ];
 
+    const intentionallyBlankFormulaChapters = new Set([
+        "the-world-of-numbers",       // Chapter 3 — explicitly left blank
+        "introduction-to-probability", // Chapter 7 — explicitly left blank
+        "propositions-and-converses"   // No formula content supplied
+    ]);
+
     function renderFormulaResults(searchTerm) {
-        const term = String(searchTerm || "").toLowerCase();
-    
-        const filtered = formulas.filter(function (item) {
-            return (
-                item.name.toLowerCase().includes(term) ||
-                item.formula.toLowerCase().includes(term) ||
-                item.description.toLowerCase().includes(term) ||
-                getQuestionChapterName({ chapterId: item.chapterId })
-                    .toLowerCase()
-                    .includes(term)
-            );
+        const term = String(searchTerm || "").trim().toLowerCase();
+        const chapters = Array.isArray(curriculum && curriculum.chapters) ? curriculum.chapters : [];
+        const visibleChapters = chapters.filter(function (chapter) {
+            const chapterFormulas = formulas.filter(function (item) { return item.chapterId === chapter.id; });
+            const matchesChapter = !term || chapter.name.toLowerCase().includes(term) || chapter.number.toLowerCase().includes(term);
+            const matchesFormula = chapterFormulas.some(function (item) {
+                return item.name.toLowerCase().includes(term) || item.formula.toLowerCase().includes(term) || item.description.toLowerCase().includes(term);
+            });
+            return !term ? true : (matchesChapter || matchesFormula);
         });
-    
-        if (!filtered.length) {
-            return "<p>No matching formulas found.</p>";
-        }
-    
-        return filtered.map(function (item) {
+
+        if (!visibleChapters.length) return "<p>No matching formulas found.</p>";
+
+        return visibleChapters.map(function (chapter) {
+            const items = formulas.filter(function (item) {
+                if (item.chapterId !== chapter.id) return false;
+                if (!term) return true;
+                return chapter.name.toLowerCase().includes(term) || item.name.toLowerCase().includes(term) || item.formula.toLowerCase().includes(term) || item.description.toLowerCase().includes(term);
+            });
+            const blank = items.length === 0;
             return `
-                <article class="formula-card">
-    
-                    <p class="panel-kicker">
-                        ${escapeHTML(getQuestionChapterName({
-                            chapterId: item.chapterId
-                        }))}
-                    </p>
-    
-                    <h3>${escapeHTML(item.name)}</h3>
-    
-                    <p class="formula-expression">
-                        ${escapeHTML(item.formula)}
-                    </p>
-    
-                    <p>${escapeHTML(item.description)}</p>
-    
-                </article>
+                <section class="formula-chapter">
+                    <div class="formula-chapter-heading">
+                        <p class="panel-kicker">CHAPTER ${escapeHTML(chapter.number)}</p>
+                        <h2>${escapeHTML(chapter.name)}</h2>
+                        ${chapter.id === "world-of-algorithms" || chapter.id === "quadrilaterals" || chapter.id === "two-variables-one-line" || chapter.id === "surface-area-and-volume" ? '<span class="formula-source-tag">Independently researched</span>' : ''}
+                    </div>
+                    ${blank ? `<p class="formula-empty">${intentionallyBlankFormulaChapters.has(chapter.id) ? "Intentionally left blank — no formulas supplied." : "No formula entries currently listed for this chapter."}</p>` : `<div class="formula-card-grid">${items.map(function (item) {
+                        return `<article class="formula-card">
+                            <h3>${escapeHTML(item.name)}</h3>
+                            <p class="formula-expression">${escapeHTML(item.formula)}</p>
+                            <p>${escapeHTML(item.description)}</p>
+                        </article>`;
+                    }).join("")}</div>`}
+                </section>
             `;
         }).join("");
     }
-    
+
     function renderFormulas(searchTerm) {
         mainContent.innerHTML = `
             <div class="workspace-page">
-    
-                ${pageHeader(
-                    "MATHEMATICS REFERENCE",
-                    "Formula Library.",
-                    "Search a starter collection of mathematical formulas and their meanings."
-                )}
-    
+                ${pageHeader("MATHEMATICS REFERENCE", "Formula Library.", "Your chapter-wise reference: supplied formulas first, with independently researched additions for Chapters 11–14.")}
                 <section class="workspace-panel">
-    
-                    <label for="formula-search">
-                        Search formulas
-                    </label>
-    
-                    <input
-                        id="formula-search"
-                        type="search"
-                        placeholder="Search by formula or chapter..."
-                        value="${escapeHTML(searchTerm || "")}">
-    
-                    <div id="formula-results">
-                        ${renderFormulaResults(searchTerm)}
-                    </div>
-    
-                    <p class="learn-source-note">
-                        This is a starter reference collection, not a complete
-                        or official chapter-wise formula list.
-                    </p>
-    
+                    <label for="formula-search">Search formulas or chapters</label>
+                    <input id="formula-search" type="search" placeholder="Search by formula or chapter..." value="${escapeHTML(searchTerm || "")}">
+                    <div id="formula-results">${renderFormulaResults(searchTerm)}</div>
+                    <p class="learn-source-note">Chapters 3 and 7 are intentionally blank. Chapters 11–14 are researched additions. Chapters 1, 2, 4, 5, 6, 8 and 10 are based on the topics you supplied; please compare the exact expressions with your original sheet before treating the list as final.</p>
                 </section>
-    
             </div>
         `;
     }
 
+
+    // =====================================================
+    // MATHLAB AI TUTOR — Gemini via a private backend endpoint
+    // =====================================================
+
+    const tutorState = { messages: [], busy: false };
+
+    function renderTutorMessages() {
+        if (!tutorState.messages.length) {
+            return '<div class="tutor-empty"><strong>What are you working on?</strong><p>Ask a maths question, request a concept explanation, or paste a problem. You can ask follow-up questions too.</p></div>';
+        }
+        return tutorState.messages.map(function (message) {
+            return `<article class="tutor-message ${message.role === "user" ? "user" : "assistant"}">
+                <p class="tutor-role">${message.role === "user" ? "YOU" : "MATHLAB AI TUTOR"}</p>
+                <div class="tutor-message-text">${escapeHTML(message.text).replace(/\n/g, "<br>")}</div>
+            </article>`;
+        }).join("");
+    }
+
+    function renderTutor() {
+        mainContent.innerHTML = `
+            <div class="workspace-page tutor-page">
+                ${pageHeader("MATHLAB AI", "Meet your AI Tutor.", "Ask questions beyond the current syllabus. Get clear explanations, worked steps and help with follow-up doubts.")}
+                <section class="tutor-panel">
+                    <div class="tutor-topline"><div><strong>MathLab AI Tutor</strong><p>Powered by Gemini · Answers may need checking</p></div><button type="button" class="secondary-button" data-action="tutor-clear" ${tutorState.busy ? "disabled" : ""}>New chat</button></div>
+                    <div class="tutor-messages" id="tutor-messages" aria-live="polite">${renderTutorMessages()}</div>
+                    <form id="tutor-form" class="tutor-composer">
+                        <label class="sr-only" for="tutor-input">Your question</label>
+                        <textarea id="tutor-input" rows="3" maxlength="4000" placeholder="Ask MathLab anything…" ${tutorState.busy ? "disabled" : ""}></textarea>
+                        <div class="tutor-composer-footer"><span>Be specific. Include your working if you want it checked.</span><button type="submit" ${tutorState.busy ? "disabled" : ""}>${tutorState.busy ? "Thinking…" : "Send question"}</button></div>
+                    </form>
+                    <p class="tutor-disclaimer">Learning support only. Check important answers against your textbook or teacher. Do not share personal information.</p>
+                </section>
+            </div>
+        `;
+        const messageBox = document.getElementById("tutor-messages");
+        if (messageBox) messageBox.scrollTop = messageBox.scrollHeight;
+    }
+
+    async function sendTutorMessage(text) {
+        const clean = String(text || "").trim();
+        if (!clean || tutorState.busy) return;
+        tutorState.messages.push({ role: "user", text: clean });
+        tutorState.busy = true;
+        renderTutor();
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ messages: tutorState.messages.slice(-16) })
+            });
+            const data = await response.json().catch(function () { return {}; });
+            if (!response.ok) throw new Error(data.error || "The tutor could not respond. Please try again.");
+            if (!data.reply) throw new Error("The tutor returned an empty response. Please try again.");
+            tutorState.messages.push({ role: "assistant", text: data.reply });
+        } catch (error) {
+            tutorState.messages.push({ role: "assistant", text: "I couldn't connect to the AI Tutor. Check that the MathLab server is running and that the Gemini API key is configured. Details: " + error.message });
+        } finally {
+            tutorState.busy = false;
+            renderTutor();
+        }
+    }
 
     // =====================================================
     // PROGRESS DASHBOARD
@@ -1920,6 +1979,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     break;
                 case "formulas":
                     renderFormulas("");
+                    break;
+                case "tutor":
+                    renderTutor();
                     break;
                 default:
                     state.activeTool = "labs";
@@ -1987,6 +2049,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!actionButton) return;
 
         const action = actionButton.dataset.action;
+
+        if (action === "tutor-clear") {
+            if (!tutorState.busy) { tutorState.messages = []; renderTutor(); }
+            return;
+        }
 
         if (action === "return-learn") {
             renderTool("labs");
@@ -2090,6 +2157,15 @@ document.addEventListener("DOMContentLoaded", function () {
     mainContent.addEventListener("submit", function (event) {
         const form = event.target;
 
+        if (form.id === "tutor-form") {
+            event.preventDefault();
+            const input = document.getElementById("tutor-input");
+            if (!input || tutorState.busy) return;
+            const message = input.value.trim();
+            if (message) sendTutorMessage(message);
+            return;
+        }
+
         if (form.id === "challenge-answer-form") {
             event.preventDefault();
 
@@ -2161,9 +2237,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // =====================================================
     const hashToTool = {
         "#labs": "labs", "#learn": "labs", "#practice": "practice",
-        "#challenges": "challenge", "#formulas": "formulas"
+        "#challenges": "challenge", "#formulas": "formulas", "#tutor": "tutor"
     };
-    const toolToHash = { labs: "#labs", practice: "#practice", challenge: "#challenges", formulas: "#formulas" };
+    const toolToHash = { labs: "#labs", practice: "#practice", challenge: "#challenges", formulas: "#formulas", tutor: "#tutor" };
     function syncToolFromLocation() {
         const requested = hashToTool[location.hash] || "labs";
         if (requested !== state.activeTool) renderTool(requested, false);

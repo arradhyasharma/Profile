@@ -1105,3 +1105,38 @@ body{background:#f3f5ef;color:var(--color-text)}
 .workspace-panel button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 @media(max-width:800px){.challenge-settings{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.challenge-settings,.mcq-options{grid-template-columns:1fr}.challenge-status-row{align-items:flex-start;flex-direction:column}.mcq-instruction{grid-column:auto}}
+
+
+/* ---------------------------------------------------------
+   FORMULA LIBRARY CHAPTER GROUPS + MATHLAB AI TUTOR
+   --------------------------------------------------------- */
+.formula-chapter{margin:26px 0 34px;padding-top:18px;border-top:1px solid #e5e9df}
+.formula-chapter-heading{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:13px}
+.formula-chapter-heading .panel-kicker{width:100%;margin:0}
+.formula-chapter-heading h2{margin:0;color:#273021;font-size:clamp(18px,2.2vw,23px)}
+.formula-source-tag{padding:5px 8px;border-radius:999px;background:#edf3e4;color:#526b2c;font-size:10px;font-weight:800;letter-spacing:.3px}
+.formula-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.formula-empty{padding:15px 16px;border:1px dashed #d8dfce;border-radius:9px;background:#fafbf8;color:#78806f!important;font-size:12px!important}
+.tutor-panel{overflow:hidden;border:1px solid #e1e5da;border-radius:16px;background:#fff;box-shadow:0 8px 26px rgba(24,30,20,.055)}
+.tutor-topline{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 20px;border-bottom:1px solid #e8ece3}
+.tutor-topline strong{color:#242a20;font-size:15px}
+.tutor-topline p{margin:4px 0 0;color:#798071;font-size:11px}
+.tutor-topline button{flex:0 0 auto}
+.tutor-messages{display:flex;flex-direction:column;gap:13px;min-height:330px;max-height:56vh;overflow-y:auto;padding:20px;background:#fafbf8}
+.tutor-empty{display:grid;align-content:center;justify-items:center;min-height:280px;text-align:center}
+.tutor-empty strong{color:#303a27;font-size:18px}
+.tutor-empty p{max-width:440px;color:#70796a;font-size:13px;line-height:1.7}
+.tutor-message{max-width:min(86%,720px);padding:13px 15px;border:1px solid #e4e8df;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(24,30,20,.025)}
+.tutor-message.user{align-self:flex-end;background:#f0f5e7;border-color:#dce7cc}
+.tutor-message.assistant{align-self:flex-start}
+.tutor-role{margin:0 0 7px;color:#75864e!important;font-size:9px!important;font-weight:900;letter-spacing:1.1px}
+.tutor-message-text{color:#30372b;font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.tutor-composer{padding:16px 18px 12px;border-top:1px solid #e8ece3}
+.tutor-composer textarea{display:block;width:100%;min-height:90px;resize:vertical;padding:13px 14px;border:1px solid #dce2d5;border-radius:10px;background:#fff;color:#252b20;font:inherit;font-size:14px;line-height:1.6;outline:none}
+.tutor-composer textarea:focus{border-color:#8da94c;box-shadow:0 0 0 3px rgba(141,169,76,.13)}
+.tutor-composer-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:11px}
+.tutor-composer-footer span{color:#7a8172;font-size:10px;line-height:1.5}
+.tutor-composer-footer button{flex:0 0 auto}
+.tutor-disclaimer{margin:0;padding:0 18px 16px;color:#858b7e!important;font-size:10px!important;line-height:1.6!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.formula-card-grid{grid-template-columns:1fr}.tutor-messages{min-height:280px;max-height:52vh;padding:13px}.tutor-message{max-width:96%}.tutor-topline{padding:14px}.tutor-composer{padding:13px}.tutor-composer-footer{align-items:stretch;flex-direction:column}.tutor-composer-footer button{width:100%}}
