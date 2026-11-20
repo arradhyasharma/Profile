@@ -1152,3 +1152,14 @@ body{background:#f3f5ef;color:var(--color-text)}
         gap: 5px;
     }
 }
+.ml-footer-bottom a {
+    color: #AEB5A7;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ml-footer-bottom a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
