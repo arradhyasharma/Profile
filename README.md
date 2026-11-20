@@ -96,6 +96,9 @@ MathLab/
 ├── app.js
 ├── class9-curriculum.js
 ├── workshop.js
+├── about.html
+├── 404.css
+├── 404.html
 ```
 
 ### File Descriptions
@@ -107,6 +110,9 @@ MathLab/
 | `app.js` | Contains the main application logic, navigation, and interactive functionality. |
 | `class9-curriculum.js` | Stores Class 9 curriculum data used by the application. |
 | `workshop.js` | Contains workshop-related functionality. |
+| `404.html` | Contains a custom 404 error page. |
+| `404.css` | Contains the 404 error page's styling, layouts, colours, and responsive design. |
+| `about.html` | about HTML entry point of the website. Has the about page|
 
 ---
 
