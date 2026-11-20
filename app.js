@@ -996,8 +996,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "labs", label: "Math Labs" },
         { id: "practice", label: "Practice" },
         { id: "challenge", label: "Challenge Mode" },
-        { id: "formulas", label: "Formula Library" },
-        { id: "tutor", label: "AI Tutor" }
+        { id: "formulas", label: "Formula Library" }
     ];
 
     function createWorkspaceNavigation() {
