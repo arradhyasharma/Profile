@@ -1006,15 +1006,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (navigation.querySelector('[data-page="about"]')) return;
 
-    const aboutLink = document.createElement("a");
-
-    aboutLink.href = "/Profile/about.html";
-    aboutLink.className = "workspace-tool-button";
-    aboutLink.textContent = "About";
-    aboutLink.setAttribute("data-page", "about");
-
-    navigation.appendChild(aboutLink);
-    }
 
     function createWorkspaceNavigation() {
         let navigation = document.getElementById("mathlab-workspace-nav");
@@ -1050,8 +1041,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const workspaceNavigation = createWorkspaceNavigation();
-
-createAboutNavigationLink();
 
 function updateToolNavigation() {
         workspaceNavigation
