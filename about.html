@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about MathLab, an educational platform designed to help Class 9 students understand and practise mathematics.">
+    <title>About MathLab</title>
+
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        .ml-about {
+            background: var(--color-secondary);
+            color: var(--color-text);
+            min-height: 100vh;
+        }
+
+        .ml-about-nav {
+            background: var(--color-primary);
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ml-about-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .ml-about-brand span {
+            color: var(--color-accent);
+        }
+
+        .ml-about-home {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #555B51;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: 0.2s ease;
+        }
+
+        .ml-about-home:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border-color: var(--color-accent);
+        }
+
+        .ml-about-container {
+            width: min(1100px, 88%);
+            margin: auto;
+        }
+
+        .ml-about-hero {
+            background: var(--color-primary);
+            color: white;
+            padding: 90px 0;
+        }
+
+        .ml-about-tag {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .ml-about-hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.1;
+            max-width: 750px;
+            margin-bottom: 22px;
+        }
+
+        .ml-about-hero h1 span {
+            color: var(--color-accent);
+        }
+
+        .ml-about-hero p {
+            color: #C4C9BE;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 650px;
+        }
+
+        .ml-about-section {
+            padding: 75px 0;
+        }
+
+        .ml-about-section h2 {
+            font-size: clamp(27px, 4vw, 38px);
+            margin-bottom: 18px;
+            color: var(--color-primary);
+        }
+
+        .ml-about-section p {
+            color: var(--color-muted);
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 780px;
+        }
+
+        .ml-about-label {
+            color: #718A31;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .ml-about-mission {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 30px;
+        }
+
+        .ml-about-features {
+            background: #ECEEE7;
+        }
+
+        .ml-about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .ml-about-card {
+            background: white;
+            padding: 26px;
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+        }
+
+        .ml-about-card h3 {
+            color: var(--color-primary);
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .ml-about-card p {
+            font-size: 14px;
+        }
+
+        .ml-about-number {
+            color: #718A31;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .ml-about-info {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .ml-about-info-item {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .ml-about-info-item small {
+            display: block;
+            color: var(--color-muted);
+            margin-bottom: 8px;
+        }
+
+        .ml-about-info-item strong {
+            color: var(--color-primary);
+            font-size: 15px;
+        }
+
+        .ml-about-bottom {
+            background: var(--color-primary);
+            color: #AEB5A7;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+        }
+
+        .ml-about-bottom strong {
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 650px) {
+            .ml-about-hero {
+                padding: 65px 0;
+            }
+
+            .ml-about-grid,
+            .ml-about-info {
+                grid-template-columns: 1fr;
+            }
+
+            .ml-about-section {
+                padding: 55px 0;
+            }
+
+            .ml-about-mission {
+                padding: 23px;
+            }
+
+            .ml-about-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="ml-about">
+
+    <header class="ml-about-nav">
+        <a href="index.html" class="ml-about-brand">
+            Math<span>Lab.</span>
+        </a>
+
+        <a href="index.html" class="ml-about-home">
+            HOME
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="ml-about-hero">
+            <div class="ml-about-container">
+                <div class="ml-about-tag">About MathLab</div>
+
+                <h1>
+                    Mathematics is more than
+                    <span>memorizing formulas.</span>
+                </h1>
+
+                <p>
+                    MathLab is a focused learning platform designed
+                    to help Class 9 students understand mathematical
+                    concepts, practise problem-solving and build
+                    strong foundations.
+                </p>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="ml-about-section">
+            <div class="ml-about-container">
+                <div class="ml-about-label">Who we are</div>
+
+                <h2>What is MathLab?</h2>
+
+                <p>
+                    MathLab brings important mathematics learning
+                    resources together in one organized space.
+                    Instead of jumping between different resources,
+                    students can explore concepts, practise questions,
+                    attempt challenges and revise formulas through
+                    a single platform.
+                </p>
+
+                <div class="ml-about-mission">
+                    <div class="ml-about-label">Our mission</div>
+
+                    <h2>Make understanding the first step.</h2>
+
+                    <p>
+                        We believe that mathematics becomes easier
+                        when students understand why a method works,
+                        not just which formula to use. MathLab aims
+                        to encourage curiosity, independent thinking
+                        and consistent practice.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="ml-about-section ml-about-features">
+            <div class="ml-about-container">
+                <div class="ml-about-label">The learning experience</div>
+
+                <h2>Everything starts with learning.</h2>
+
+                <p>
+                    MathLab is organized around different ways
+                    of developing mathematical understanding.
+                </p>
+
+                <div class="ml-about-grid">
+
+                    <div class="ml-about-card">
+                        <div class="ml-about-number">01 / LEARN</div>
+                        <h3>Understand concepts</h3>
+                        <p>
+                            Explore mathematical topics through
+                            structured explanations and examples.
+                        </p>
+                    </div>
+
+                    <div class="ml-about-card">
+                        <div class="ml-about-number">02 / PRACTISE</div>
+                        <h3>Build your skills</h3>
+                        <p>
+                            Strengthen your understanding by
+                            solving practice questions.
+                        </p>
+                    </div>
+
+                    <div class="ml-about-card">
+                        <div class="ml-about-number">03 / CHALLENGE</div>
+                        <h3>Test your thinking</h3>
+                        <p>
+                            Take on challenges that encourage
+                            logical reasoning and problem-solving.
+                        </p>
+                    </div>
+
+                    <div class="ml-about-card">
+                        <div class="ml-about-number">04 / REVISE</div>
+                        <h3>Revise with confidence</h3>
+                        <p>
+                            Review important mathematical formulas
+                            and keep essential concepts accessible.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach -->
+        <section class="ml-about-section">
+            <div class="ml-about-container">
+                <div class="ml-about-label">Our approach</div>
+
+                <h2>Think. Understand. Solve.</h2>
+
+                <p>
+                    Learning mathematics should be an active process.
+                    Students should have the opportunity to explore
+                    ideas, make connections, learn from mistakes and
+                    develop their own problem-solving abilities.
+                </p>
+
+                <p style="margin-top: 16px;">
+                    MathLab is designed around this belief:
+                    understanding comes before memorization,
+                    and practice turns understanding into skill.
+                </p>
+            </div>
+        </section>
+
+        <!-- Project Information -->
+        <section class="ml-about-section ml-about-features">
+            <div class="ml-about-container">
+                <div class="ml-about-label">Behind the project</div>
+
+                <h2>Project information</h2>
+
+                <p>
+                    MathLab is a web-based educational project
+                    focused on making mathematics learning
+                    more organized and accessible.
+                </p>
+
+                <div class="ml-about-info">
+                    <div class="ml-about-info-item">
+                        <small>Project name</small>
+                        <strong>MathLab</strong>
+                    </div>
+
+                    <div class="ml-about-info-item">
+                        <small>Academic focus</small>
+                        <strong>Class 9 Mathematics</strong>
+                    </div>
+
+                    <div class="ml-about-info-item">
+                        <small>Technologies</small>
+                        <strong>HTML, CSS and JavaScript</strong>
+                    </div>
+
+                    <div class="ml-about-info-item">
+                        <small>Platform</small>
+                        <strong>Web</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Bottom -->
+    <footer class="ml-about-bottom">
+        <p>Made with care by <strong>ARRADHYA SHARMA</strong></p>
+        <p>&copy; 2026 MathLab. All rights reserved.</p>
+    </footer>
+
+</body>
+  </html>
+  
