@@ -1008,7 +1008,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const aboutLink = document.createElement("a");
 
-    aboutLink.href = "about.html";
+    aboutLink.href = "/Profile/about.html";
     aboutLink.className = "workspace-tool-button";
     aboutLink.textContent = "About";
     aboutLink.setAttribute("data-page", "about");
