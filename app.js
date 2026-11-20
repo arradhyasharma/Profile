@@ -1051,7 +1051,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const workspaceNavigation = createWorkspaceNavigation();
 
-    function updateToolNavigation() {
+createAboutNavigationLink();
+
+function updateToolNavigation() {
         workspaceNavigation
             .querySelectorAll("[data-tool]")
             .forEach(function (button) {
