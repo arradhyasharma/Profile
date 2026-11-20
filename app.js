@@ -997,7 +997,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "practice", label: "Practice" },
         { id: "challenge", label: "Challenge Mode" },
         { id: "formulas", label: "Formula Library" },
-        `<a href="about.html">About</a>`
     ];
 
     function createWorkspaceNavigation() {
