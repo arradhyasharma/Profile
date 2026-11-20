@@ -1,6 +1,7 @@
 
 /* =========================================
    MATHLAB CUSTOM 404 PAGE
+   Theme: Charcoal / Off-white / Lime
    ========================================= */
 
 * {
@@ -10,35 +11,32 @@
 }
 
 :root {
-    --background: #080d19;
-    --surface: #B8F23B;
-    --primary: #171917;
-    --secondary: #F5F5F0;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --border: rgba(148, 163, 184, 0.15);
+    --color-primary: #171917;
+    --color-secondary: #F5F5F0;
+    --color-accent: #B8F23B;
+    --color-surface: #FFFFFF;
+    --color-text: #20231F;
+    --color-muted: #777C72;
+    --color-border: #E5E7DF;
+
+    --topbar-height: 72px;
+    --sidebar-width: 250px;
 }
 
 body {
     min-height: 100vh;
     font-family: Inter, "Segoe UI", Arial, sans-serif;
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(56, 189, 248, 0.10),
-            transparent 38%
-        ),
-        var(--background);
-    color: var(--text);
+    background: var(--color-secondary);
+    color: var(--color-text);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 25px;
 }
 
 .error-container {
     width: 100%;
-    max-width: 1050px;
+    max-width: 1100px;
     min-height: 85vh;
     display: flex;
     flex-direction: column;
@@ -51,26 +49,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .logo {
-    font-size: 27px;
-    font-weight: 800;
-    color: var(--text);
+    font-size: 28px;
+    font-weight: 850;
+    letter-spacing: -1.5px;
+    color: var(--color-primary);
     text-decoration: none;
-    letter-spacing: -1px;
 }
 
 .logo span {
-    color: var(--primary);
+    color: #779F13;
 }
 
 .header-label {
     font-size: 10px;
     letter-spacing: 2px;
-    color: var(--muted);
+    color: var(--color-muted);
+    font-weight: 600;
 }
 
 /* Main Content */
@@ -78,67 +77,64 @@ body {
 .error-content {
     text-align: center;
     padding: 65px 15px;
-    animation: appear 0.7s ease;
+    animation: appear 0.6s ease;
 }
 
 .error-illustration {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
+    gap: 15px;
+    margin-bottom: 35px;
 }
 
 .number {
-    font-size: clamp(100px, 18vw, 180px);
+    font-size: clamp(110px, 18vw, 185px);
     font-weight: 900;
     line-height: 1;
     letter-spacing: -12px;
-    background: linear-gradient(
-        135deg,
-        #38bdf8,
-        #818cf8
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-primary);
 }
 
 .math-symbol {
-    width: clamp(75px, 12vw, 120px);
-    height: clamp(75px, 12vw, 120px);
+    width: clamp(80px, 12vw, 125px);
+    height: clamp(80px, 12vw, 125px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(56, 189, 248, 0.4);
     border-radius: 28px;
-    color: var(--primary);
+    background: var(--color-accent);
+    color: var(--color-primary);
     font-size: clamp(45px, 8vw, 75px);
+    font-weight: 700;
     transform: rotate(-8deg);
-    background: rgba(56, 189, 248, 0.06);
-    box-shadow: 0 0 45px rgba(56, 189, 248, 0.10);
 }
 
 .error-label {
-    color: var(--primary);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    margin-bottom: 18px;
+    display: inline-block;
+    background: rgba(184, 242, 59, 0.25);
+    color: #506C0C;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 h1 {
-    font-size: clamp(28px, 5vw, 43px);
-    font-weight: 750;
+    font-size: clamp(30px, 5vw, 46px);
+    font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 18px;
     letter-spacing: -1.5px;
+    color: var(--color-primary);
+    margin-bottom: 18px;
 }
 
 .description {
     max-width: 530px;
     margin: 0 auto;
-    color: var(--muted);
+    color: var(--color-muted);
     font-size: 16px;
     line-height: 1.8;
 }
@@ -149,48 +145,48 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
     flex-wrap: wrap;
     margin-top: 35px;
 }
 
 .home-button,
 .back-button {
-    min-height: 48px;
+    min-height: 49px;
     padding: 0 25px;
-    border-radius: 10px;
+    border-radius: 9px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 750;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: 0.2s ease;
 }
 
 .home-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary);
-    color: #06111d;
+    background: var(--color-primary);
+    color: var(--color-surface);
     text-decoration: none;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--color-primary);
 }
 
 .home-button:hover {
-    background: #7dd3fc;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateY(-2px);
 }
 
 .back-button {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
 }
 
 .back-button:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
 }
 
 /* Bottom Message */
@@ -201,7 +197,7 @@ h1 {
     justify-content: center;
     gap: 15px;
     margin-top: 55px;
-    color: var(--muted);
+    color: var(--color-muted);
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -209,7 +205,7 @@ h1 {
 .help-line {
     width: 35px;
     height: 1px;
-    background: var(--border);
+    background: var(--color-border);
 }
 
 /* Footer */
@@ -220,18 +216,18 @@ h1 {
     justify-content: space-between;
     gap: 15px;
     padding: 22px 0;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
     font-size: 12px;
 }
 
 .footer span {
-    color: var(--primary);
+    color: #779F13;
     margin: 0 5px;
 }
 
 .copyright {
-    color: #64748b;
+    color: var(--color-muted);
 }
 
 /* Animation */
@@ -239,7 +235,7 @@ h1 {
 @keyframes appear {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(18px);
     }
 
     to {
@@ -251,7 +247,6 @@ h1 {
 /* Mobile Responsive */
 
 @media (max-width: 600px) {
-
     body {
         padding: 18px;
     }
