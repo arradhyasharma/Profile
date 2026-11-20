@@ -1120,118 +1120,35 @@ body{background:#f3f5ef;color:var(--color-text)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:600px){.formula-card-grid{grid-template-columns:1fr}.tutor-messages{min-height:280px;max-height:52vh;padding:13px}.tutor-message{max-width:96%}.tutor-topline{padding:14px}.tutor-composer{padding:13px}.tutor-composer-footer{align-items:stretch;flex-direction:column}.tutor-composer-footer button{width:100%}}
 
+/* Footer Bottom Strip */
 
-/* =========================================
-   MATHLAB — GLOBAL WEBSITE FOOTER
-========================================= */
-
-.ml-site-footer {
+.ml-footer-bottom {
     width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     background: var(--color-primary);
-    color: var(--color-secondary);
-    padding: 35px 5% 22px;
-    margin-top: 55px;
-    border-top: 3px solid var(--color-accent);
+    border-top: 1px solid #30332E;
 }
 
-.footer-inner {
-    max-width: 1500px;
-    margin: 0 auto;
-}
-
-/* Footer Brand */
-
-.footer-brand {
-    text-align: center;
-}
-
-.footer-logo {
-    display: inline-block;
-    color: var(--color-secondary);
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    text-decoration: none;
-}
-
-.footer-logo span:first-child {
-    color: var(--color-accent);
-}
-
-.footer-period {
-    color: var(--color-secondary);
-}
-
-.footer-brand p {
-    margin-top: 8px;
+.ml-footer-bottom p {
     color: #AEB5A7;
     font-size: 12px;
     line-height: 1.6;
 }
 
-/* Divider */
-
-.footer-divider {
-    width: 100%;
-    height: 1px;
-    margin: 27px 0 20px;
-    background: #30332E;
-}
-
-/* Bottom Section */
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-}
-
-.footer-credit,
-.footer-copyright {
-    color: #AEB5A7;
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.footer-credit strong {
-    color: var(--color-secondary);
-    font-weight: 700;
-}
-
-.footer-heart {
+.ml-footer-bottom strong {
     color: var(--color-accent);
     font-weight: 700;
 }
 
-/* Hover Effect */
-
-.footer-logo:hover {
-    opacity: 0.85;
-}
-
-/* Mobile Responsive */
-
 @media (max-width: 600px) {
-
-    .ml-site-footer {
-        padding: 30px 6% 20px;
-        margin-top: 35px;
-    }
-
-    .footer-bottom {
+    .ml-footer-bottom {
         flex-direction: column;
         text-align: center;
-        gap: 7px;
+        padding: 17px 5%;
+        gap: 5px;
     }
-
-    .footer-divider {
-        margin: 22px 0 17px;
-    }
-
-    .footer-logo {
-        font-size: 25px;
-    }
-
 }
-
