@@ -999,6 +999,23 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "formulas", label: "Formula Library" },
     ];
 
+    function createAboutNavigationLink() {
+    const navigation = document.getElementById("mathlab-workspace-nav");
+
+    if (!navigation) return;
+
+    if (navigation.querySelector('[data-page="about"]')) return;
+
+    const aboutLink = document.createElement("a");
+
+    aboutLink.href = "about.html";
+    aboutLink.className = "workspace-tool-button";
+    aboutLink.textContent = "About";
+    aboutLink.setAttribute("data-page", "about");
+
+    navigation.appendChild(aboutLink);
+    }
+
     function createWorkspaceNavigation() {
         let navigation = document.getElementById("mathlab-workspace-nav");
 
