@@ -1859,12 +1859,77 @@ document.addEventListener("DOMContentLoaded", function () {
         mainContent.innerHTML = `
             <div class="workspace-page">
                 ${pageHeader("MATHEMATICS REFERENCE", "Formula Library.", "Your chapter-wise reference: supplied formulas first, with independently researched additions for Chapters 11–14.")}
-                <section class="workspace-panel">
-                    <label for="formula-search">Search formulas or chapters</label>
+                <section class="workspace-panel formula-library-panel">
+                    <div class="formula-library-actions">
+                        <label for="formula-search">Search formulas or chapters</label>
+                        <button type="button" class="formula-print-all-button" data-action="formula-print-all">Print All</button>
+                    </div>
                     <input id="formula-search" type="search" placeholder="Search by formula or chapter..." value="${escapeHTML(searchTerm || "")}">
                     <div id="formula-results">${renderFormulaResults(searchTerm)}</div>
                     <p class="learn-source-note">Chapters 3 and 7 are intentionally blank. Chapters 11–14 are researched additions. Chapters 1, 2, 4, 5, 6, 8 and 10 are based on the topics you supplied; please compare the exact expressions with your original sheet before treating the list as final.</p>
                 </section>
+            </div>
+        `;
+    }
+
+
+    // =====================================================
+    // FORMULA LIBRARY — A4 PRINT-ALL PREVIEW
+    // Uses the same curriculum and formula data as the library.
+    // Empty chapters keep their heading and intentionally show no message.
+    // =====================================================
+
+    function renderFormulaPrintPreview() {
+        const chapters = Array.isArray(curriculum && curriculum.chapters) ? curriculum.chapters : [];
+        const chapterMarkup = chapters.map(function (chapter) {
+            const chapterItems = formulas.filter(function (item) {
+                return item.chapterId === chapter.id;
+            });
+
+            return `
+                <section class="formula-print-chapter">
+                    <header class="formula-print-chapter-heading">
+                        <span>CHAPTER ${escapeHTML(chapter.number)}</span>
+                        <h2>${escapeHTML(chapter.name)}</h2>
+                    </header>
+                    ${chapterItems.length ? `
+                        <div class="formula-print-list">
+                            ${chapterItems.map(function (item) {
+                                return `
+                                    <article class="formula-print-item">
+                                        <h3>${escapeHTML(item.name)}</h3>
+                                        <p class="formula-print-expression">${escapeHTML(item.formula)}</p>
+                                        <p class="formula-print-description">${escapeHTML(item.description)}</p>
+                                    </article>
+                                `;
+                            }).join("")}
+                        </div>
+                    ` : ""}
+                </section>
+            `;
+        }).join("");
+
+        mainContent.innerHTML = `
+            <div class="formula-print-preview-page">
+                <div class="formula-print-toolbar">
+                    <button type="button" class="secondary-button" data-action="formula-print-back">← Back to Formula Library</button>
+                    <p>Print preview · A4 paper</p>
+                    <button type="button" class="formula-print-all-button" data-action="formula-print-confirm">Print / Save as PDF</button>
+                </div>
+                <article class="formula-print-paper" id="formula-print-paper">
+                    <header class="formula-print-document-header">
+                        <p class="formula-print-brand">MathLab<span>.</span></p>
+                        <p class="formula-print-grade">CLASS IX · MATHEMATICS</p>
+                        <h1>Formula Sheet</h1>
+                        <p class="formula-print-subtitle">Chapter-wise mathematics reference</p>
+                    </header>
+                    <div class="formula-print-chapters">
+                        ${chapterMarkup}
+                    </div>
+                    <footer class="formula-print-footer">
+                        MathLab — The Mathematics Workshop
+                    </footer>
+                </article>
             </div>
         `;
     }
@@ -2051,6 +2116,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (action === "tutor-clear") {
             if (!tutorState.busy) { tutorState.messages = []; renderTutor(); }
+            return;
+        }
+
+        if (action === "formula-print-all") {
+            renderFormulaPrintPreview();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            return;
+        }
+
+        if (action === "formula-print-back") {
+            renderTool("formulas");
+            return;
+        }
+
+        if (action === "formula-print-confirm") {
+            window.print();
             return;
         }
 

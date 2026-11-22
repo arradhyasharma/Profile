@@ -1198,3 +1198,287 @@ body{background:#f3f5ef;color:var(--color-text)}
     outline: 3px solid var(--color-accent);
     outline-offset: 4px;
 }
+
+
+/* =====================================================
+   FORMULA LIBRARY — PRINT ALL / A4 PREVIEW
+===================================================== */
+
+.formula-library-actions {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.formula-library-actions label {
+    flex: 1;
+}
+
+.formula-library-actions .formula-print-all-button,
+.formula-print-all-button {
+    min-height: 43px;
+    padding: 10px 18px;
+    border: 1px solid #20251d;
+    border-radius: 8px;
+    background: #20251d;
+    color: #c8f15b;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.formula-library-actions .formula-print-all-button:hover,
+.formula-print-all-button:hover {
+    background: #39432c;
+}
+
+.formula-print-preview-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.formula-print-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 20px;
+}
+
+.formula-print-toolbar p {
+    color: #68705f;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.formula-print-paper {
+    width: 210mm;
+    max-width: 100%;
+    min-height: 297mm;
+    margin: 0 auto 35px;
+    padding: 15mm 14mm 13mm;
+    background: #fff;
+    color: #20251d;
+    border: 1px solid #e1e5da;
+    box-shadow: 0 12px 38px rgba(25, 31, 20, .12);
+}
+
+.formula-print-document-header {
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #20251d;
+    text-align: center;
+}
+
+.formula-print-brand {
+    color: #20251d;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.formula-print-brand span {
+    color: #789b32;
+}
+
+.formula-print-grade {
+    margin-top: 5px;
+    color: #68705f;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.formula-print-document-header h1 {
+    margin-top: 9px;
+    color: #20251d;
+    font-size: 25px;
+    letter-spacing: -.7px;
+}
+
+.formula-print-subtitle {
+    margin-top: 4px;
+    color: #68705f;
+    font-size: 10px;
+}
+
+.formula-print-chapter {
+    margin: 0 0 13px;
+    break-inside: auto;
+    page-break-inside: auto;
+}
+
+.formula-print-chapter-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    background: #f1f5e9;
+    border-left: 3px solid #789b32;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+.formula-print-chapter-heading span {
+    flex: 0 0 auto;
+    color: #617d2d;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: .6px;
+}
+
+.formula-print-chapter-heading h2 {
+    color: #273021;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.formula-print-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 9px;
+}
+
+.formula-print-item {
+    min-width: 0;
+    padding: 7px 8px;
+    border: 1px solid #e5e9df;
+    border-radius: 5px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.formula-print-item h3 {
+    margin: 0 0 4px;
+    color: #30382a;
+    font-size: 9px;
+    line-height: 1.35;
+}
+
+.formula-print-expression {
+    padding: 5px 6px;
+    margin: 0 0 4px;
+    background: #f5f7f0;
+    color: #33491d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.formula-print-description {
+    margin: 0;
+    color: #626a5b;
+    font-size: 8px;
+    line-height: 1.45;
+}
+
+.formula-print-footer {
+    padding-top: 8px;
+    margin-top: 16px;
+    border-top: 1px solid #e5e9df;
+    color: #858b80;
+    font-size: 8px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .formula-library-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .formula-library-actions .formula-print-all-button {
+        width: 100%;
+    }
+
+    .formula-print-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .formula-print-toolbar .secondary-button,
+    .formula-print-toolbar .formula-print-all-button {
+        width: 100%;
+    }
+
+    .formula-print-paper {
+        padding: 22px 16px;
+    }
+
+    .formula-print-list {
+        grid-template-columns: 1fr;
+    }
+
+    .formula-print-chapter-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+    html,
+    body {
+        width: 100% !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #formula-print-paper,
+    #formula-print-paper * {
+        visibility: visible !important;
+    }
+
+    #formula-print-paper {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+
+    .formula-print-chapter {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    .formula-print-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .formula-print-chapter-heading {
+        break-after: avoid;
+        page-break-after: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .formula-print-expression {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
