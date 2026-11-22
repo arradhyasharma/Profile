@@ -996,7 +996,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "labs", label: "Math Labs" },
         { id: "practice", label: "Practice" },
         { id: "challenge", label: "Challenge Mode" },
-        { id: "formulas", label: "Formula Library" }
+        { id: "formulas", label: "Formula Library" },
+        { id: "tutor", label: "AI Tutor" }
     ];
 
     function createWorkspaceNavigation() {
@@ -1940,6 +1941,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // =====================================================
 
     const tutorState = { messages: [], busy: false };
+    const tutorApiUrl = String(window.MATHLAB_AI_API_URL || "").trim();
 
     function renderTutorMessages() {
         if (!tutorState.messages.length) {
@@ -1959,6 +1961,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ${pageHeader("MATHLAB AI", "Meet your AI Tutor.", "Ask questions beyond the current syllabus. Get clear explanations, worked steps and help with follow-up doubts.")}
                 <section class="tutor-panel">
                     <div class="tutor-topline"><div><strong>MathLab AI Tutor</strong><p>Powered by Gemini · Answers may need checking</p></div><button type="button" class="secondary-button" data-action="tutor-clear" ${tutorState.busy ? "disabled" : ""}>New chat</button></div>
+                    ${tutorApiUrl ? "" : '<div class="tutor-connection-note" role="status"><strong>Setup required:</strong> the AI Tutor interface is ready, but its secure backend URL has not been added yet. We will connect it after deploying the backend.</div>'}
                     <div class="tutor-messages" id="tutor-messages" aria-live="polite">${renderTutorMessages()}</div>
                     <form id="tutor-form" class="tutor-composer">
                         <label class="sr-only" for="tutor-input">Your question</label>
@@ -1980,7 +1983,10 @@ document.addEventListener("DOMContentLoaded", function () {
         tutorState.busy = true;
         renderTutor();
         try {
-            const response = await fetch("/api/chat", {
+            if (!tutorApiUrl) {
+                throw new Error("The secure AI backend has not been connected yet. Deploy the backend and add its URL in ai-config.js.");
+            }
+            const response = await fetch(tutorApiUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ messages: tutorState.messages.slice(-16) })
@@ -1990,7 +1996,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!data.reply) throw new Error("The tutor returned an empty response. Please try again.");
             tutorState.messages.push({ role: "assistant", text: data.reply });
         } catch (error) {
-            tutorState.messages.push({ role: "assistant", text: "I couldn't connect to the AI Tutor. Check that the MathLab server is running and that the Gemini API key is configured. Details: " + error.message });
+            tutorState.messages.push({ role: "assistant", text: "I couldn't reach the AI Tutor. " + error.message });
         } finally {
             tutorState.busy = false;
             renderTutor();
