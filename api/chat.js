@@ -38,6 +38,14 @@ function applyCors(req, res) {
     const origin = req.headers.origin;
     const allowedOrigins = getAllowedOrigins();
 
+    if (!origin || !allowedOrigins.includes(origin)) {
+    console.log("[MathLab CORS diagnostic]", {
+        method: req.method,
+        receivedOrigin: origin || "(missing)",
+        allowedOrigins
+    });
+    }
+
     res.setHeader("Vary", "Origin");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
