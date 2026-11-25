@@ -2045,7 +2045,7 @@ if (messageBox) {
         text: "I couldn't reach the online AI Tutor. You can try the built-in offline learning backup below.",
         backupAvailable: true
     });
-        }
+        
         } finally {
             tutorState.busy = false;
             renderTutor();
