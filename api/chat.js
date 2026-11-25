@@ -127,6 +127,42 @@ return transcript;
 
 }
 
+
+function getHttpStatus(error) {
+    const status = Number(error?.status || error?.response?.status);
+
+    if (Number.isFinite(status) && status > 0) {
+        return status;
+    }
+
+    const match = String(error?.message || "").match(/^\s*(\d{3})\b/);
+    return match ? Number(match[1]) : null;
+}
+
+async function createInteractionWithRetry(ai, request) {
+    const firstAttemptStartedAt = Date.now();
+
+    try {
+        return await ai.interactions.create(request);
+    } catch (error) {
+        const elapsed = Date.now() - firstAttemptStartedAt;
+        const status = getHttpStatus(error);
+
+        // Retry only quick HTTP 503 failures.
+        if (status !== 503 || elapsed > 15000) {
+            throw error;
+        }
+
+        console.warn("[MathLab] Quick 503 detected. Retrying once.");
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // Exactly one retry. Any second failure goes to the main catch block.
+        return await ai.interactions.create(request);
+    }
+}
+
+
 export default async function handler(req, res) {
 const originAllowed = applyCors(req, res);
 
@@ -160,13 +196,13 @@ try {
 }  
 const geminiStartedAt = Date.now();
 try {  
-    const ai = new GoogleGenAI({ apiKey });  
-    const interaction = await ai.interactions.create({  
-        model: MODEL,  
-        input,  
-        system_instruction: TUTOR_INSTRUCTIONS,  
-        store: false  
-    });  
+    const ai = new GoogleGenAI({ apiKey });
+    const interaction = await createInteractionWithRetry(ai, {
+        model: MODEL,
+        input,
+        system_instruction: TUTOR_INSTRUCTIONS,
+        store: false
+    });
 
     const reply = String(interaction.output_text || "").trim();  
     if (!reply) {  
