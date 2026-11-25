@@ -186,4 +186,4 @@ try {
         error: "Gemini could not complete that request. Please try again in a moment."
     });
 }
-    
+}
