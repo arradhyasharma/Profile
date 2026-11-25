@@ -2173,6 +2173,27 @@ if (messageBox) {
             if (!tutorState.busy) { tutorState.messages = []; renderTutor(); }
             return;
         }
+        if (action === "tutor-backup") {
+    const lastUserMessage = tutorState.messages
+        .slice()
+        .reverse()
+        .find(function (message) {
+            return message.role === "user";
+        });
+
+    const question = lastUserMessage ? lastUserMessage.text : "";
+    const backupAnswer = window.MathLabBackup
+        ? window.MathLabBackup.getLesson(question)
+        : null;
+
+    tutorState.messages.push({
+        role: "assistant",
+        text: backupAnswer || "I couldn't match that question to one of the 14 built-in chapter topics yet. Try mentioning the chapter name or a related concept."
+    });
+
+    renderTutor();
+    return;
+        }
 
         if (action === "formula-print-all") {
             renderFormulaPrintPreview();
