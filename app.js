@@ -1943,17 +1943,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const tutorState = { messages: [], busy: false };
     const tutorApiUrl = String(window.MATHLAB_AI_API_URL || "").trim();
 
-    function renderTutorMessages() {
-        if (!tutorState.messages.length) {
-            return '<div class="tutor-empty"><strong>What are you working on?</strong><p>Ask a maths question, request a concept explanation, or paste a problem. You can ask follow-up questions too.</p></div>';
-        }
-        return tutorState.messages.map(function (message) {
-            return `<article class="tutor-message ${message.role === "user" ? "user" : "assistant"}">
-                <p class="tutor-role">${message.role === "user" ? "YOU" : "MATHLAB AI TUTOR"}</p>
-                <div class="tutor-message-text">${escapeHTML(message.text).replace(/\n/g, "<br>")}</div>
-            </article>`;
-        }).join("");
+    
+function renderTutorMessages() {
+    if (!tutorState.messages.length) {
+        return '<div class="tutor-empty"><strong>What are you working on?</strong><p>Ask a maths question, request a concept explanation, or paste a problem. You can ask follow-up questions too.</p></div>';
     }
+
+    return tutorState.messages.map(function (message) {
+        let messageContent;
+
+        if (message.role === "user") {
+            // Keep user messages as plain, safely escaped text.
+            messageContent = escapeHTML(message.text).replace(/\n/g, "<br>");
+        } else {
+            // Convert assistant Markdown into HTML, then sanitize it.
+            const markdownHTML = marked.parse(message.text, {
+                breaks: true,
+                gfm: true
+            });
+
+            messageContent = DOMPurify.sanitize(markdownHTML);
+        }
+
+        return `<article class="tutor-message ${message.role === "user" ? "user" : "assistant"}">
+            <p class="tutor-role">${message.role === "user" ? "YOU" : "MATHLAB AI TUTOR"}</p>
+            <div class="tutor-message-text">${messageContent}</div>
+        </article>`;
+    }).join("");
+}
+    
 
     function renderTutor() {
         mainContent.innerHTML = `
@@ -1972,8 +1990,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 </section>
             </div>
         `;
-        const messageBox = document.getElementById("tutor-messages");
-        if (messageBox) messageBox.scrollTop = messageBox.scrollHeight;
+        
+const messageBox = document.getElementById("tutor-messages");
+
+if (messageBox) {
+    // Render mathematical notation in assistant messages.
+    if (typeof renderMathInElement === "function") {
+        messageBox.querySelectorAll(".tutor-message.assistant .tutor-message-text")
+            .forEach(function (element) {
+                renderMathInElement(element, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "$", right: "$", display: false },
+                        { left: "\\[", right: "\\]", display: true },
+                        { left: "\\(", right: "\\)", display: false }
+                    ],
+                    throwOnError: false
+                });
+            });
+    }
+
+    messageBox.scrollTop = messageBox.scrollHeight;
+}
+        
     }
 
     async function sendTutorMessage(text) {
