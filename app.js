@@ -1968,7 +1968,12 @@ function renderTutorMessages() {
         return `<article class="tutor-message ${message.role === "user" ? "user" : "assistant"}">
             <p class="tutor-role">${message.role === "user" ? "YOU" : "MATHLAB AI TUTOR"}</p>
             <div class="tutor-message-text">${messageContent}</div>
-        </article>`;
+            ${message.backupAvailable ? `
+            <button type="button" class="secondary-button" data-action="tutor-backup">
+            Open MathLab Offline Backup
+            </button>
+            ` : ""}
+            </article>`;
     }).join("");
 }
     
