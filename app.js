@@ -2040,7 +2040,12 @@ if (messageBox) {
             if (!data.reply) throw new Error("The tutor returned an empty response. Please try again.");
             tutorState.messages.push({ role: "assistant", text: data.reply });
         } catch (error) {
-            tutorState.messages.push({ role: "assistant", text: "I couldn't reach the AI Tutor. " + error.message });
+    tutorState.messages.push({
+        role: "assistant",
+        text: "I couldn't reach the online AI Tutor. You can try the built-in offline learning backup below.",
+        backupAvailable: true
+    });
+        }
         } finally {
             tutorState.busy = false;
             renderTutor();
