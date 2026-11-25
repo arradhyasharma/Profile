@@ -155,6 +155,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: error.message });
     }
 
+    const geminiStartedAt = Date.now();
     try {
         const ai = new GoogleGenAI({ apiKey });
         const interaction = await ai.interactions.create({
@@ -170,8 +171,21 @@ export default async function handler(req, res) {
         }
 
         return res.status(200).json({ reply });
-    } catch (error) {
-        console.error("MathLab Gemini request failed:", error && error.message ? error.message : "Unknown error");
-        return res.status(502).json({ error: "Gemini could not complete that request. Please try again in a moment." });
+    
+} catch (error) {
+    console.error("MathLab Gemini request failed:", {
+        durationMs: Date.now() - geminiStartedAt,
+        name: error?.name || "UnknownError",
+        status: error?.status || error?.response?.status || null,
+        message: error?.message || "Unknown error"
+    });
+
+        console.log("[MathLab Gemini] Success:", {
+            durationMs: Date.now() - geminiStartedAt
+        });
+
+    return res.status(502).json({
+        error: "Gemini could not complete that request. Please try again in a moment."
+    });
     }
-}
+    
