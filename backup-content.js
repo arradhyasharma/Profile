@@ -116,36 +116,53 @@ window.MathLabBackup = (function () {
         }
     };
 
-    function findLesson(question) {
-        const text = String(question || "").toLowerCase();
+    
+function findLesson(question) {
+    const text = String(question || "")
+        .toLowerCase()
+        .replace(/[’']/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
 
-        const matches = [
-            ["orienting-yourself-coordinates", ["coordinate", "coordinates", "quadrant", "origin", "x-axis", "y-axis", "graph"]],
-            ["introduction-to-linear-polynomials", ["polynomial", "linear polynomial", "coefficient", "degree of"]],
-            ["the-world-of-numbers", ["rational", "irrational", "real number", "square root", "number system"]],
-            ["exploring-algebraic-identities", ["identity", "identities", "expand", "factorise", "factorize", "(a+b)", "algebraic"]],
-            ["circles", ["circle", "radius", "diameter", "circumference", "chord", "arc"]],
-            ["measuring-space-perimeter-and-area", ["perimeter", "area", "rectangle", "square area", "surface of a 2d"]],
-            ["introduction-to-probability", ["probability", "chance", "likely", "dice", "die", "coin"]],
-            ["sequences-and-progressions", ["sequence", "progression", "arithmetic progression", "common difference", "ap", "next term"]],
-            ["propositions-and-converses", ["proposition", "converse", "true or false statement"]],
-            ["understanding-data", ["data", "mean", "median", "mode", "average", "statistics"]],
-            ["world-of-algorithms", ["algorithm", "steps", "procedure", "flowchart"]],
-            ["quadrilaterals", ["quadrilateral", "parallelogram", "rhombus", "trapezium", "interior angle"]],
-            ["two-variables-one-line", ["two variables", "linear equation", "ordered pair", "simultaneous", "straight line equation"]],
-            ["surface-area-and-volume", ["volume", "surface area", "cuboid", "cube", "cylinder", "3d"]]
-        ];
+    const rules = [
+        ["surface-area-and-volume", ["surface area", "volume", "cuboid", "cylinder", "3d shape", "cube volume"]],
+        ["circles", ["circle", "radius", "diameter", "circumference", "chord", "arc", "sector"]],
+        ["orienting-yourself-coordinates", ["coordinate", "coordinates", "quadrant", "origin", "x-axis", "y-axis", "graph", "plot a point"]],
+        ["introduction-to-probability", ["probability", "chance", "likely", "dice", "die", "coin", "random event"]],
+        ["sequences-and-progressions", ["sequence", "progression", "arithmetic progression", "geometric progression", "common difference", "common ratio", "next term", "ap ", " gp "]],
+        ["propositions-and-converses", ["proposition", "converse", "hypothesis", "conclusion", "true or false statement"]],
+        ["understanding-data", ["data", "mean", "median", "mode", "average", "statistics", "frequency"]],
+        ["world-of-algorithms", ["algorithm", "flowchart", "pseudocode", "finite steps", "step-by-step procedure"]],
+        ["quadrilaterals", ["quadrilateral", "parallelogram", "rhombus", "trapezium", "trapezoid", "interior angle", "four-sided"]],
+        ["two-variables-one-line", ["two variables", "linear equation in two", "ordered pair", "simultaneous", "straight line equation", "x + y", "y = ", "2x + y"]],
+        ["introduction-to-linear-polynomials", ["polynomial", "linear polynomial", "coefficient", "degree of", "solve for x", "solve the equation", "linear equation", "equation", "find x", "value of x"]],
+        ["exploring-algebraic-identities", ["identity", "identities", "expand", "factorise", "factorize", "algebraic", "(a+b)", "a+b", "a - b", "square of a binomial"]],
+        ["the-world-of-numbers", ["rational", "irrational", "real number", "square root", "number system", "integer", "whole number", "prime number", "simplify the root"]],
+        ["measuring-space-perimeter-and-area", ["perimeter", "area", "rectangle", "triangle area", "parallelogram area", "square area", "2d shape", "herons formula"]]
+    ];
 
-        for (const item of matches) {
-            if (item[1].some(function (keyword) {
-                return text.includes(keyword);
-            })) {
-                return lessons[item[0]];
-            }
+    for (const rule of rules) {
+        if (rule[1].some(function (keyword) {
+            return text.includes(keyword);
+        })) {
+            return lessons[rule[0]];
         }
-
-        return null;
     }
+
+    if (
+        (text.includes("solve") || text.includes("evaluate") ||
+         text.includes("simplify") || text.includes("find")) &&
+        (text.includes("x=") || text.includes("x =") ||
+         text.includes("x+") || text.includes("x +") ||
+         text.includes("x-") || text.includes("x -") ||
+         /[0-9]x/.test(text))
+    ) {
+        return lessons["introduction-to-linear-polynomials"];
+    }
+
+    return null;
+}
+    
 
     function formatLesson(lesson) {
         return [
