@@ -1,196 +1,150 @@
-
 # MathLab
 
-## An Interactive Mathematics Learning Platform for Class 9
+**An interactive mathematics learning platform for Class 9 CBSE students.**
 
-MathLab is a web-based mathematics learning platform designed to make mathematics easier to understand through interactive learning, practice exercises, challenges, and a formula library.
+MathLab is a web-based educational project designed to make mathematics easier to understand through structured lessons, solved examples, practice questions, formulas, challenges, and an AI-powered tutor.
 
-The project focuses on helping students build strong mathematical foundations instead of simply memorising formulas and procedures.
+The goal is not just to help students find answers, but to help them understand the concepts behind those answers.
 
-**Current Version:** 1
+## Project Overview
 
----
+MathLab brings multiple mathematics learning resources together in one platform:
 
-## 1. Project Overview
+- **Chapter-wise learning:** Structured content covering the Class 9 mathematics syllabus.
+- **Concept explanations:** Clear explanations of mathematical ideas.
+- **Solved examples:** Step-by-step examples demonstrating mathematical methods.
+- **Practice questions:** Questions to strengthen understanding and problem-solving.
+- **Formula library:** A collection of important mathematical formulas.
+- **Practice challenges:** Activities designed to encourage logical thinking.
+- **AI Tutor:** An AI-powered assistant that helps students understand mathematical concepts and questions.
+- **Offline learning backup:** Built-in backup material for selected lessons when the online AI Tutor is unavailable.
 
-Mathematics becomes easier when students understand the concepts behind the formulas.
+## Curriculum
 
-MathLab aims to provide a structured digital learning environment where students can:
+MathLab currently follows a 14-topic Class 9 mathematics curriculum:
 
-- Explore mathematical concepts.
-- Learn through interactive mathematical activities.
-- Practise questions.
-- Test their understanding.
-- Improve problem-solving skills.
-- Revise important formulas.
+1. Orienting Yourself: The Use of Coordinates
+2. Introduction to Linear Polynomials
+3. The World of Numbers
+4. Exploring Algebraic Identities
+5. I'm Up and Down, and Round and Round (Circles)
+6. Measuring Space: Perimeter and Area
+7. Understanding Probability
+8. Sequences and Progressions
+9. Propositions and Their Converses
+10. Understanding Data
+11. Algorithms
+12. Exploring Quadrilaterals
+13. Two Variables, One Line
+14. Surface Area and Volume
 
-The platform is designed primarily around the Class 9 mathematics curriculum, with the possibility of expanding its educational content in future versions.
+## AI Integration and Usage
 
----
+Artificial intelligence has been used in different parts of the MathLab project, both as a student learning tool and as a development assistant.
 
-## 2. Main Features
+### 1. Google Gemini — AI Tutor
 
-### 2.1 Math Labs
+Google Gemini is integrated into MathLab to power the online AI Tutor.
 
-Math Labs provide an interactive environment for exploring mathematical concepts.
+The AI Tutor is designed to:
 
-Instead of relying only on textbook explanations, students can use interactive learning activities to develop a better understanding of mathematics.
+- Explain mathematical concepts.
+- Help students understand questions.
+- Provide learning guidance.
+- Support step-by-step problem-solving.
+- Respond to mathematics-related questions.
 
-### 2.2 Practice
+The AI Tutor communicates with Gemini through a backend API instead of exposing the Gemini API key in the public frontend.
 
-The Practice section allows students to work on mathematical questions and strengthen their understanding.
+### 2. AI-Assisted Development
 
-Its purpose is to help students apply concepts, identify mistakes, and improve their problem-solving abilities.
+Other AI tools have also been used as development assistants during the creation and improvement of MathLab.
 
-### 2.3 Challenge Mode
+They have supported tasks such as:
 
-Challenge Mode provides a way to test mathematical knowledge through problem-solving activities.
+- Identifying and debugging programming errors.
+- Reviewing HTML, CSS, and JavaScript.
+- Suggesting improvements to website functionality.
+- Helping develop and refine features.
+- Improving documentation and project organization.
+- Supporting troubleshooting and testing.
 
-It encourages students to think logically, apply concepts, and develop confidence when approaching mathematical problems.
+AI-generated suggestions were used as development assistance. Implementation decisions, code changes, and testing were handled during the development process.
 
-### 2.4 Formula Library
+**Note:** Gemini powers the AI Tutor. Other AI tools were used for development assistance; they are not necessarily integrated into the live website.
 
-The Formula Library provides a central place to revise important mathematical formulas.
-
-It helps students quickly refer to relevant formulas while studying, practising, or revising topics.
-
----
-
-## 3. Curriculum
-
-MathLab is designed around the Class 9 mathematics syllabus.
-
-The curriculum is organised into individual topics so that students can study mathematics in a structured manner.
-
-The curriculum data is maintained separately in:
-
-`class9-curriculum.js`
-
-This separation makes it easier to maintain and update educational content without unnecessarily changing the main application logic.
-
----
-
-## 4. Technologies Used
-
-MathLab is developed using standard web technologies.
+## Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| HTML5 | Defines the structure of the website. |
-| CSS3 | Controls appearance, styling, and layout. |
-| JavaScript | Handles application logic and interactive features. |
+| HTML | Website structure |
+| CSS | Design and styling |
+| JavaScript | Functionality and interactions |
+| Google Gemini API | AI Tutor |
+| Vercel | AI backend hosting |
+| GitHub | Source-code management |
+| GitHub Pages | Website hosting |
 
-The current frontend is built using HTML, CSS, and vanilla JavaScript without requiring a frontend framework.
+## Project Architecture
 
----
+MathLab uses a separate frontend and backend approach.
 
-## 5. Project Structure
+- **Frontend:** The student-facing website.
+- **Backend:** A Vercel API endpoint that communicates with Gemini.
+- **Offline backup:** A separate JavaScript file containing selected lesson material.
 
-The main project files are organised as follows:
+The Gemini API key is stored securely in backend environment variables and should never be placed directly in frontend JavaScript.
 
-```text
-MathLab/
-│
-├── index.html
-├── main.css
-├── app.js
-├── class9-curriculum.js
-├── workshop.js
-├── about.html
-├── 404.css
-├── 404.html
-```
+## Offline Learning Backup
 
-### File Descriptions
+MathLab includes a basic offline learning backup for selected topics.
 
-| File | Description |
-|---|---|
-| `index.html` | Main HTML entry point of the website. |
-| `main.css` | Contains the website's styling, layouts, colours, and responsive design. |
-| `app.js` | Contains the main application logic, navigation, and interactive functionality. |
-| `class9-curriculum.js` | Stores Class 9 curriculum data used by the application. |
-| `workshop.js` | Contains workshop-related functionality. |
-| `404.html` | Contains a custom 404 error page. |
-| `404.css` | Contains the 404 error page's styling, layouts, colours, and responsive design. |
-| `about.html` | about HTML entry point of the website. Has the about page|
+When the online AI Tutor cannot respond, students can access available backup learning material.
 
----
+The backup currently contains:
 
-## 6. How to Use MathLab
+- A concept explanation.
+- An example.
+- A practice question.
+- Its answer.
+- A hint.
 
-1. Open the MathLab website.
-2. Explore the available learning sections.
-3. Select Math Labs to explore mathematical concepts.
-4. Open Practice to work on questions.
-5. Use Challenge Mode to test your understanding.
-6. Visit Formula Library when you need to revise formulas.
+The offline backup is a supporting feature, not a complete replacement for the AI Tutor.
 
-The platform is intended to support regular learning and revision.
+## Deployment
 
+The project uses:
 
----
+- **GitHub Pages** for the frontend.
+- **Vercel** for the AI Tutor backend.
 
-## 7. Project Goals
+**Live Website:**  
+https://arradhyasharma.github.io/Profile/
 
-MathLab aims to achieve the following educational goals:
+## Project Goals
 
-- Make mathematics easier to understand.
-- Encourage conceptual learning.
-- Improve mathematical reasoning.
-- Develop problem-solving skills.
-- Make practice more engaging.
-- Provide a convenient formula revision system.
-- Create a foundation for future educational features.
+MathLab aims to:
 
----
+1. Make mathematics easier to understand.
+2. Encourage conceptual learning instead of memorization.
+3. Improve independent problem-solving skills.
+4. Make learning more interactive.
+5. Use AI as a learning assistant rather than a substitute for understanding.
+6. Provide students with accessible mathematics resources.
 
-## 8. Future Development
+## Development Status
 
-MathLab is an evolving project. Potential future improvements include:
+MathLab is an evolving educational project. Its features and learning content are continuously being improved through development, testing, and feedback.
 
-- More interactive mathematical simulations.
-- Additional practice questions.
-- Improved explanations for mathematical concepts.
-- Better progress tracking.
-- Additional curriculum support.
-- More advanced problem-solving activities.
-- Further improvements to accessibility and mobile responsiveness.
+Some features may have limitations, and the offline backup does not yet cover every possible student question.
 
-Future features will be introduced while maintaining the stability of existing functionality.
+## Acknowledgements
+
+MathLab was developed with the assistance of AI tools, including:
+
+- **Google Gemini:** Used to power the AI Tutor.
+- **Other AI assistants:** Used for development support, debugging, troubleshooting, code improvement, and documentation.
 
 ---
 
-## 9. Development Philosophy
-
-MathLab is being developed with a focus on:
-
-- Simplicity and usability.
-- Educational value.
-- Reliable functionality.
-- Maintainable code.
-- Responsive design.
-- Gradual improvements.
-
-The priority is to build a useful learning platform rather than adding features simply for the sake of having more features.
-
----
-
-## 10. Project Information
-
-| Detail | Information |
-|---|---|
-| Project Name | MathLab |
-| Version | 1 |
-| Category | Educational Web Application |
-| Primary Audience | Class 9 Mathematics Students |
-| Frontend | HTML, CSS, JavaScript |
-
----
-
-## License
-
-No specific open-source license is declared in this documentation. All rights and permissions should be determined by the repository owner.
-
----
-
-**MathLab — Understand Mathematics. Practise Better. Think Smarter.**
+**MathLab — Learn Mathematics. Understand Concepts. Think Beyond Answers.**
