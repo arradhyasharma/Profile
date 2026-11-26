@@ -232,12 +232,11 @@ try {
 const geminiStartedAt = Date.now();
 try {  
     const ai = new GoogleGenAI({ apiKey });
-    const interaction = await createInteractionWithRetry(ai, {
-        model: MODEL,
-        input,
-        system_instruction: TUTOR_INSTRUCTIONS,
-        store: false
-    });
+    const interaction = await createInteractionWithFallback(ai, {
+    input,
+    system_instruction: TUTOR_INSTRUCTIONS,
+    store: false
+});
 
     const reply = String(interaction.output_text || "").trim();  
     if (!reply) {  
