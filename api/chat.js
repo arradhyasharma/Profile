@@ -139,28 +139,63 @@ function getHttpStatus(error) {
     return match ? Number(match[1]) : null;
 }
 
-async function createInteractionWithRetry(ai, request) {
-    const firstAttemptStartedAt = Date.now();
+
+function isFailoverWorthy(error) {
+    const status = getHttpStatus(error);
+    return [404, 429, 500, 502, 503, 504].includes(status);
+}
+
+async function createInteractionWithFallback(ai, request) {
+    const primaryModel = String(
+        process.env.GEMINI_MODEL || "gemini-3.8-flash"
+    ).trim();
+
+    const fallbackModel = String(
+        process.env.GEMINI_FALLBACK_MODEL || "gemini-3.6-flash"
+    ).trim();
 
     try {
-        return await ai.interactions.create(request);
-    } catch (error) {
-        const elapsed = Date.now() - firstAttemptStartedAt;
-        const status = getHttpStatus(error);
+        console.log("[MathLab] Trying primary:", primaryModel);
 
-        // Retry only quick HTTP 503 failures.
-        if (status !== 503 || elapsed > 15000) {
-            throw error;
+        return await ai.interactions.create({
+            ...request,
+            model: primaryModel
+        });
+
+    } catch (primaryError) {
+
+        if (
+            !isFailoverWorthy(primaryError) ||
+            !fallbackModel ||
+            fallbackModel === primaryModel
+        ) {
+            throw primaryError;
         }
 
-        console.warn("[MathLab] Quick 503 detected. Retrying once.");
+        console.warn(
+            "[MathLab] Primary failed. Trying fallback:",
+            fallbackModel,
+            getHttpStatus(primaryError)
+        );
 
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        try {
+            return await ai.interactions.create({
+                ...request,
+                model: fallbackModel
+            });
 
-        // Exactly one retry. Any second failure goes to the main catch block.
-        return await ai.interactions.create(request);
+        } catch (fallbackError) {
+
+            console.error("[MathLab] Both models failed.", {
+                primaryStatus: getHttpStatus(primaryError),
+                fallbackStatus: getHttpStatus(fallbackError)
+            });
+
+            throw fallbackError;
+        }
     }
 }
+
 
 
 export default async function handler(req, res) {
